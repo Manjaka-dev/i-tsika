@@ -40,7 +40,7 @@ export default function AboutPage() {
   const team = [
     {
       name: "ANDRIANTSOA A. Manjaka",
-      role: "Full Stack Developer",
+      role: "Growth Marketer",
       image: "/manjaka.webp",
       bio: "Étudiant passionné en informatique, animé par la curiosité et déterminé à concevoir des solutions intelligentes et fiables grâce au travail d'équipe et à l'apprentissage continu."
     },
@@ -48,13 +48,13 @@ export default function AboutPage() {
       name: "ANDRIAMIHARISOA Aina Satamandresy",
       role: "Business Developer",
       image: "/aina_satamandresy.webp",
-      bio: "Extraverti, dynamique et souriant, je m'adapte instantanément à tout interlocuteur grâce à une écoute active et une communication claire. Mon aisance en contexte client et mon sens de la négociation me permettent de créer des relations de confiance."
+      bio: "Extraverti, dynamique et souriant, je m'adapte instantanément à tout interlocuteur grâce à une écoute active et une communication claire. Mon aisance en contexte client et mon sens de la négociation me permettent de créer des relations de confiance tout en défendant les intérêts techniques et commerciaux de l'entreprise."
     },
     {
-      name: "ANDRIARINIRINA Miaritsoa",
-      role: "Frontend Developer",
+      name: "ANDRIAMITENOVOLA Miaritsoa",
+      role: "Lead developper",
       image: "/miaritsoa.webp",
-      bio: "Passionnée par la création d'interfaces utilisateur élégantes et intuitives, je m'efforce de combiner esthétique et fonctionnalité pour offrir la meilleure expérience utilisateur possible."
+      bio: "Lead developper passionné par l’innovation, j’œuvre à concrétiser les ambitions et à propulser les projets vers de nouveaux horizons. Véritable pont entre la vision des clients et des solutions tangibles et durables, je repense les approches existantes et guide les équipes vers l’excellence. Mon objectif : accompagner chaque projet sur le chemin de l’impact et du succès"
     }
   ];
 

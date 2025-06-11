@@ -61,7 +61,7 @@ export default function HomePage() {
       id: "project-future",
       title: "Votre projet pourrait figurer ici",
       description: "Faites-nous confiance pour réaliser votre site web ou application sur mesure. Contactez-nous dès aujourd'hui pour discuter de votre projet.",
-      imageSrc: "/placeholder.jpg",
+      imageSrc: "/projet.webp",
       category: "À venir",
       link: "/contact",
       featured: true,
@@ -129,7 +129,7 @@ export default function HomePage() {
       <section id="about" className="py-24">
         <AboutSection 
           values={values}
-          imageSrc="/placeholder.jpg"
+          imageSrc="/nous.webp"
           description="I-Tsika est une agence web créative fondée par des passionnés du numérique en 2025. Notre mission est d'aider les entreprises à se démarquer sur internet grâce à des solutions web innovantes, accessibles et performantes. Nous croyons que chaque projet mérite une approche sur mesure pour répondre parfaitement aux besoins uniques de chaque client."
         />
       </section>
