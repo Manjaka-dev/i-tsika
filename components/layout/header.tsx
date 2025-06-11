@@ -50,11 +50,9 @@ export default function Header() {
           <Link href="/services" className="text-white hover:text-[#fbc63d] transition-colors">
             Services
           </Link>
-          <Link href="/portfolio" className="text-white hover:text-[#fbc63d] transition-colors">
-            Réalisations
-          </Link>
-          <Link href="/pricing" className="text-white hover:text-[#fbc63d] transition-colors">
-            Tarifs
+
+          <Link href="/devis" className="text-white hover:text-[#fbc63d] transition-colors">
+            Devis
           </Link>
           <Link href="/faq" className="text-white hover:text-[#fbc63d] transition-colors">
             FAQ
@@ -111,20 +109,8 @@ export default function Header() {
             >
               Services
             </Link>
-            <Link
-              href="/portfolio"
-              className="text-white hover:text-[#fbc63d] py-2"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Réalisations
-            </Link>
-            <Link
-              href="/pricing"
-              className="text-white hover:text-[#fbc63d] py-2"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Tarifs
-            </Link>
+
+  
             <Link
               href="/faq"
               className="text-white hover:text-[#fbc63d] py-2"

@@ -99,29 +99,7 @@ const services = [
       "Recommandations d'améliorations"
     ]
   },
-  {
-    id: "seo",
-    title: "Optimisation SEO / performance",
-    description: "Améliorez votre visibilité sur les moteurs de recherche et optimisez les performances de votre site.",
-    icon: "/icons/search.svg",
-    longDescription: "Le référencement naturel (SEO) est crucial pour assurer la visibilité de votre site sur les moteurs de recherche. Nous mettons en œuvre des stratégies d'optimisation complètes pour améliorer votre positionnement et attirer un trafic qualifié vers votre site.",
-    features: [
-      "Audit SEO complet",
-      "Optimisation du contenu",
-      "Optimisation technique",
-      "Amélioration de la vitesse de chargement",
-      "Stratégie de mots-clés",
-      "Suivi des performances"
-    ],
-    process: [
-      "Analyse de votre positionnement actuel",
-      "Recherche de mots-clés stratégiques",
-      "Optimisations techniques on-page",
-      "Création de contenu optimisé",
-      "Mise en place de la stratégie de netlinking",
-      "Suivi et ajustements"
-    ]
-  },
+
   {
     id: "hebergement",
     title: "Hébergement et nom de domaine",

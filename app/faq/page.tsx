@@ -15,7 +15,7 @@ const faqCategories = [
       {
         id: "q1",
         question: "Combien de temps faut-il pour créer un site web ?",
-        answer: "Le délai de création d'un site web dépend de sa complexité. Pour un site vitrine standard, comptez environ 3 à 4 semaines du briefing à la mise en ligne. Un site e-commerce ou une application web plus complexe peut nécessiter de 6 à 12 semaines. Nous établissons toujours un calendrier précis au début du projet pour vous donner une visibilité complète sur les étapes et les délais."
+        answer: "Le délai de création d'un site web dépend de sa complexité. Pour un site vitrine standard, comptez environ 8 à 12 semaines du briefing à la mise en ligne. Un site e-commerce ou une application web plus complexe peut nécessiter de 16 à 24 semaines. Nous établissons toujours un calendrier précis au début du projet pour vous donner une visibilité complète sur les étapes et les délais."
       },
       {
         id: "q2",
@@ -60,27 +60,7 @@ const faqCategories = [
       }
     ]
   },
-  {
-    id: "seo",
-    name: "Référencement (SEO)",
-    questions: [
-      {
-        id: "q9",
-        question: "Comment améliorez-vous le référencement d'un site ?",
-        answer: "Nous intégrons les bonnes pratiques SEO dès la conception du site : structure optimisée, balisage sémantique, méta-données précises, contenu de qualité, optimisation des images, et vitesse de chargement rapide. Nous pouvons également mettre en place une stratégie SEO plus complète avec recherche de mots-clés, création de contenu optimisé et suivi des performances."
-      },
-      {
-        id: "q10",
-        question: "Combien de temps faut-il pour voir des résultats en SEO ?",
-        answer: "Le SEO est un travail de fond qui porte ses fruits sur le moyen et long terme. Les premiers résultats peuvent généralement être observés après 3 à 6 mois de travail régulier, mais une véritable amélioration du positionnement nécessite souvent 6 à 12 mois d'efforts continus. Nous vous fournissons des rapports réguliers pour suivre l'évolution des performances."
-      },
-      {
-        id: "q11",
-        question: "Qu'est-ce que le SEO local et en ai-je besoin ?",
-        answer: "Le SEO local est l'optimisation de votre visibilité dans les résultats de recherche locaux. C'est essentiel pour les entreprises qui ont une présence physique ou qui servent une zone géographique spécifique. Nous pouvons vous aider à optimiser votre présence locale via Google My Business, les annuaires locaux, et les stratégies de contenu ciblées géographiquement."
-      }
-    ]
-  },
+
   {
     id: "maintenance",
     name: "Maintenance et support",

@@ -39,8 +39,8 @@ export default function ProjectsGrid({
   showFilters = false,
   maxItems = 6,
   showCTA = true,
-  ctaText = "Voir tous les projets",
-  ctaLink = "/realisations",
+  ctaText = "Voir tous nos projets",
+  ctaLink = "/portfolio",
 }: ProjectsGridProps) {
   // State for filtering
   const [activeFilter, setActiveFilter] = useState("all");
@@ -173,9 +173,9 @@ export default function ProjectsGrid({
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.6 }}
           >
-            <Link href={ctaLink}>
-              <Button className="bg-[#fbc63d] text-[#070602] hover:bg-[#ffbb00] hover:scale-105 px-8 py-3 rounded-full text-sm font-medium transition-all duration-300">
-                {ctaText}
+            <Link href={ctaLink || "/portfolio"}>
+              <Button className="bg-[#fbc63d] text-[#070602] hover:bg-[#ffbb00] hover:scale-105 px-6 py-2 rounded-full transition-all duration-300">
+                {ctaText || "Voir tous nos projets"}
               </Button>
             </Link>
           </motion.div>

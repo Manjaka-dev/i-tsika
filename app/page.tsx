@@ -45,13 +45,7 @@ export default function HomePage() {
       icon: "/icons/settings.svg",
       link: "/services#maintenance",
     },
-    {
-      id: "seo",
-      title: "Optimisation SEO / performance",
-      description: "Améliorez votre visibilité sur les moteurs de recherche et optimisez les performances de votre site.",
-      icon: "/icons/search.svg",
-      link: "/services#seo",
-    },
+
     {
       id: "hebergement",
       title: "Hébergement et nom de domaine",
@@ -61,43 +55,16 @@ export default function HomePage() {
     },
   ];
 
-  // Projets
+  // Projets (en attente)
   const projects = [
     {
-      id: "project-1",
-      title: "Site web e-commerce pour une boutique de vêtements",
-      description: "Création d'une boutique en ligne complète avec système de paiement sécurisé et gestion des stocks.",
+      id: "project-future",
+      title: "Votre projet pourrait figurer ici",
+      description: "Faites-nous confiance pour réaliser votre site web ou application sur mesure. Contactez-nous dès aujourd'hui pour discuter de votre projet.",
       imageSrc: "/placeholder.jpg",
-      category: "E-commerce",
-      link: "https://example.com",
+      category: "À venir",
+      link: "/contact",
       featured: true,
-    },
-    {
-      id: "project-2",
-      title: "Refonte du site pour un cabinet d'avocats",
-      description: "Modernisation complète de l'identité numérique avec un design élégant et professionnel.",
-      imageSrc: "/placeholder.jpg",
-      category: "Refonte",
-      link: "https://example.com",
-      featured: true,
-    },
-    {
-      id: "project-3",
-      title: "Application web pour une startup innovante",
-      description: "Développement d'une application web sur mesure pour faciliter la gestion des tâches quotidiennes.",
-      imageSrc: "/placeholder.jpg",
-      category: "Application Web",
-      link: "https://example.com",
-      featured: true,
-    },
-    {
-      id: "project-4",
-      title: "Site vitrine pour un restaurant gastronomique",
-      description: "Création d'un site attrayant pour mettre en valeur les plats et l'ambiance du restaurant.",
-      imageSrc: "/placeholder.jpg",
-      category: "Site Vitrine",
-      link: "https://example.com",
-      featured: false,
     },
   ];
 
@@ -125,7 +92,7 @@ export default function HomePage() {
   const faqs = [
     {
       question: "En combien de temps livrez-vous un site web ?",
-      answer: "Le délai de livraison varie selon la complexité du projet. Pour un site vitrine standard, comptez environ 3 à 4 semaines. Pour un site e-commerce ou une application web plus complexe, le délai peut aller de 6 à 12 semaines. Nous définissons toujours un calendrier précis au début du projet."
+      answer: "Le délai de livraison varie selon la complexité du projet. Pour un site vitrine standard, comptez environ 8 à 12 semaines. Pour un site e-commerce ou une application web plus complexe, le délai peut aller de 16 à 24 semaines. Nous définissons toujours un calendrier précis au début du projet."
     },
     {
       question: "Puis-je modifier mon site moi-même après livraison ?",

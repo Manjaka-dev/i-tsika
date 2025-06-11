@@ -1,0 +1,57 @@
+"use client";
+
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+
+export default function PortfolioPage() {
+  const router = useRouter();
+  
+  // Rediriger après quelques secondes
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      router.push('/'); // Rediriger vers la page d'accueil
+    }, 5000); // 5 secondes
+    
+    return () => clearTimeout(timer);
+  }, [router]);
+
+  return (
+    <main className="bg-[#070602] text-white">
+      <section className="min-h-screen flex flex-col items-center justify-center text-center px-6 py-24">
+        <motion.div 
+          className="max-w-3xl mx-auto"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+            Nos réalisations arrivent bientôt
+          </h1>
+          
+          <p className="text-xl text-gray-300 mb-12">
+            Nous travaillons actuellement sur nos premiers projets client. 
+            Cette section sera bientôt disponible avec des études de cas détaillées.
+            Vous allez être redirigé vers notre page d&apos;accueil dans quelques secondes.
+          </p>
+          
+          <div className="flex flex-col md:flex-row gap-4 justify-center">
+            <Button asChild className="bg-[#fbc63d] hover:bg-[#f0b722] text-black px-6 py-3">
+              <Link href="/">
+                Retour à l&apos;accueil
+              </Link>
+            </Button>
+            
+            <Button asChild variant="outline" className="border-white text-white hover:bg-white hover:text-black px-6 py-3">
+              <Link href="/contact">
+                Nous contacter
+              </Link>
+            </Button>
+          </div>
+        </motion.div>
+      </section>
+    </main>
+  );
+}

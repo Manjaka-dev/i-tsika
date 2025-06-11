@@ -33,7 +33,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="w-8 h-8 rounded-full border border-[#7b7979] flex items-center justify-center hover:border-[#fbc63d] hover:bg-[#fbc63d]/10 transition-colors"
               >
-                <Image src="/icons/github.svg" alt="GitHub" width={16} height={16} />
+                <Image src="/icons/github.svg" alt="GitHub" width={16} height={16} className="invert brightness-0 filter" />
               </a>
               <a 
                 href="https://linkedin.com/" 
@@ -41,7 +41,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="w-8 h-8 rounded-full border border-[#7b7979] flex items-center justify-center hover:border-[#fbc63d] hover:bg-[#fbc63d]/10 transition-colors"
               >
-                <Image src="/icons/linkedin.svg" alt="LinkedIn" width={16} height={16} />
+                <Image src="/icons/linkedin.svg" alt="LinkedIn" width={16} height={16} className="invert brightness-0 filter" />
               </a>
               <a 
                 href="https://twitter.com/" 
@@ -49,7 +49,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="w-8 h-8 rounded-full border border-[#7b7979] flex items-center justify-center hover:border-[#fbc63d] hover:bg-[#fbc63d]/10 transition-colors"
               >
-                <Image src="/icons/twitter.svg" alt="Twitter" width={16} height={16} />
+                <Image src="/icons/twitter.svg" alt="Twitter" width={16} height={16} className="invert brightness-0 filter" />
               </a>
             </div>
           </div>
@@ -76,18 +76,8 @@ export default function Footer() {
                   Services
                 </Link>
               </li>
-              <li>
-                <Link href="/portfolio" className="text-[#d9d9d9] hover:text-[#fbc63d] transition-colors flex items-center">
-                  <ArrowRight className="w-4 h-4 mr-2 text-[#fbc63d]" />
-                  Réalisations
-                </Link>
-              </li>
-              <li>
-                <Link href="/pricing" className="text-[#d9d9d9] hover:text-[#fbc63d] transition-colors flex items-center">
-                  <ArrowRight className="w-4 h-4 mr-2 text-[#fbc63d]" />
-                  Tarifs
-                </Link>
-              </li>
+
+
               <li>
                 <Link href="/faq" className="text-[#d9d9d9] hover:text-[#fbc63d] transition-colors flex items-center">
                   <ArrowRight className="w-4 h-4 mr-2 text-[#fbc63d]" />
