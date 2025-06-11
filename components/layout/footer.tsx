@@ -15,13 +15,13 @@ export default function Footer() {
           <div>
             <Link href="/" className="flex items-center mb-6">
               <Image
-                src="/placeholder-logo.svg"
+                src="/logo.webp"
                 alt="Logo"
-                width={40}
-                height={40}
+                width={80}
+                height={80}
                 className="mr-2"
+                priority
               />
-              <span className="text-xl font-bold text-white">I-Tsika</span>
             </Link>
             <p className="text-[#d9d9d9] text-sm leading-relaxed mb-6">
               Nous créons des sites web modernes, performants et sur mesure pour répondre aux besoins uniques de votre entreprise.

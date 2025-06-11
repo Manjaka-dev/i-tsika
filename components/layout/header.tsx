@@ -30,13 +30,13 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <Link href="/" className="flex items-center">
           <Image
-            src="/placeholder-logo.svg"
+            src="/logo.webp"
             alt="Logo"
-            width={40}
-            height={40}
+            width={60}
+            height={60}
             className="mr-2"
+            priority
           />
-          <span className="text-xl font-bold text-white">I-Tsika</span>
         </Link>
 
         {/* Navigation desktop */}
