@@ -10,7 +10,6 @@ export async function POST(request: NextRequest) {
   // Vérifier d'abord si la configuration email est correcte
   const { isConfigured, missingVars } = checkEmailConfig();
   if (!isConfigured) {
-    console.error(`Erreur de configuration email: Variables manquantes: ${missingVars.join(', ')}`);
     return NextResponse.json({ 
       success: false, 
       error: 'Le service d\'email n\'est pas correctement configuré. Veuillez contacter l\'administrateur.' 
@@ -75,7 +74,6 @@ export async function POST(request: NextRequest) {
     }
     
   } catch (error) {
-    console.error('Erreur lors du traitement de la demande d\'envoi d\'email:', error);
     return NextResponse.json({ 
       success: false, 
       error: error instanceof Error ? error.message : 'Une erreur interne est survenue' 

@@ -11,16 +11,6 @@ export async function POST(request: NextRequest) {
     // Envoyer un email de test
     const emailResult = await sendTestEmail();
     
-    // Logs supplémentaires pour le débogage
-    console.log('Configuration utilisée:', {
-      host: mailConfig.host,
-      port: mailConfig.port,
-      secure: mailConfig.secure,
-      user: mailConfig.auth.user,
-      recipient: RECIPIENT_EMAIL,
-      sender: SENDER_EMAIL
-    });
-    
     // Retourner le résultat
     if (emailResult.success) {
       return NextResponse.json({ 
@@ -35,8 +25,6 @@ export async function POST(request: NextRequest) {
     }
     
   } catch (error: any) {
-    console.error('Erreur lors de l\'envoi de l\'email de test:', error);
-    
     return NextResponse.json({ 
       success: false,
       error: error?.message || 'Erreur lors de l\'envoi de l\'email de test'

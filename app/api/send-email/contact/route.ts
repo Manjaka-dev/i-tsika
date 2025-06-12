@@ -36,7 +36,6 @@ export async function POST(request: NextRequest) {
     }
     
   } catch (error) {
-    console.error('Erreur lors du traitement de la demande:', error);
     return NextResponse.json(
       { error: 'Une erreur est survenue lors du traitement de la demande' },
       { status: 500 }

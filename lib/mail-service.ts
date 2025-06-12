@@ -17,24 +17,14 @@ const transporter = nodemailer.createTransport({
  */
 export const verifyMailConnection = async () => {
   try {
-    console.log('Tentative de connexion au serveur email avec la configuration:');
-    console.log(`- Serveur: ${process.env.EMAIL_HOST || 'smtppro.zoho.com'}`);
-    console.log(`- Port: ${process.env.EMAIL_PORT || '465'}`);
-    console.log(`- Secure: ${process.env.EMAIL_SECURE !== 'false' ? 'true' : 'false'}`);
-    console.log(`- Utilisateur: ${process.env.EMAIL_USER || 'noreply@i-tsika.site'}`);
-    
     const verification = await transporter.verify();
-    console.log('✅ Connexion au serveur email réussie:', verification);
+    console.log('Connexion au serveur email réussie');
     return verification;
   } catch (error: any) {
-    console.error('❌ Erreur lors de la connexion au serveur email:', error);
-    console.error('Message d\'erreur:', error.message);
+    console.error('Erreur lors de la connexion au serveur email:', error.message || 'Erreur inconnue');
     
     if (error.message && error.message.includes('Authentication')) {
-      console.error('⚠️ Problème d\'authentification détecté. Vérifiez vos identifiants Zoho Mail.');
-      console.error('- Assurez-vous que le mot de passe est correct dans .env.local');
-      console.error('- Pour Zoho Mail, vous devrez peut-être créer un mot de passe d\'application spécifique');
-      console.error('- Vérifiez que l\'accès SMTP est activé dans votre compte Zoho Mail');
+      console.error('Problème d\'authentification détecté. Vérifiez vos identifiants Zoho Mail.');
     }
     
     throw error;
@@ -69,10 +59,8 @@ export const sendContactEmail = async (name: string, email: string, message: str
     };
 
     const info = await transporter.sendMail(mailOptions);
-    console.log('Email envoyé: %s', info.messageId);
     return { success: true, messageId: info.messageId };
   } catch (error) {
-    console.error('Erreur lors de l\'envoi de l\'email:', error);
     return { 
       success: false, 
       error: error instanceof Error ? error.message : 'Une erreur est survenue lors de l\'envoi'
@@ -131,10 +119,8 @@ export const sendQuoteEmail = async (
     };
 
     const info = await transporter.sendMail(mailOptions);
-    console.log('Email de demande de devis envoyé: %s', info.messageId);
     return { success: true, messageId: info.messageId };
   } catch (error) {
-    console.error('Erreur lors de l\'envoi de la demande de devis:', error);
     return { 
       success: false, 
       error: error instanceof Error ? error.message : 'Une erreur est survenue lors de l\'envoi'

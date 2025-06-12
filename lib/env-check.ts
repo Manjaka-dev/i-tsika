@@ -50,17 +50,12 @@ export function checkEmailConfig(): {
  * Utilisé au démarrage de l'application pour faciliter le débogage
  */
 export function logEmailConfigStatus(): void {
-  const { isConfigured, missingVars, configSummary } = checkEmailConfig();
+  const { isConfigured, missingVars } = checkEmailConfig();
   
   if (isConfigured) {
-    console.log('📧 Configuration email : OK');
-    console.log(`   - Serveur: ${configSummary.host}:${configSummary.port}`);
-    console.log(`   - Utilisateur: ${configSummary.user}`);
-    console.log(`   - Adresse destinataire: ${configSummary.recipientConfigured ? 'configurée (' + process.env.RECIPIENT_EMAIL + ')' : 'utilisant la valeur par défaut'}`);
-    console.log(`   - Adresse expéditeur: ${configSummary.senderConfigured ? 'configurée (' + process.env.SENDER_EMAIL + ')' : 'utilisant la valeur par défaut'}`);
+    console.log('Configuration email : OK');
   } else {
-    console.warn('⚠️ Configuration email incomplète!');
-    console.warn(`   Variables manquantes: ${missingVars.join(', ')}`);
-    console.warn('   Le service d\'envoi d\'emails pourrait ne pas fonctionner correctement.');
+    console.warn('Configuration email incomplète!');
+    console.warn(`Variables manquantes: ${missingVars.join(', ')}`);
   }
 }

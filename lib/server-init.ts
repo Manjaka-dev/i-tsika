@@ -5,11 +5,8 @@
 
 import { logEmailConfigStatus, checkEmailConfig } from './env-check';
 
-// Vérification des variables d'environnement au démarrage
+// Vérification des variables d'environnement au démarrage uniquement en développement
 if (process.env.NODE_ENV === 'development') {
-  // Journal des variables d'environnement disponibles (sans valeurs sensibles)
-  console.log('📊 Configuration du serveur I-Tsika');
-  
   // Vérification de la configuration email
   logEmailConfigStatus();
 }
