@@ -109,4 +109,4 @@ Une fois le site déployé, effectuez régulièrement les opérations suivantes 
 
 Pour toute question relative au déploiement ou à la configuration, veuillez contacter :
 - Email: contact@i-tsika.site
-- Téléphone: +261 387939905
+- Téléphone: +261 38 79 399 05

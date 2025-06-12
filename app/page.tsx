@@ -313,7 +313,7 @@ export default function HomePage() {
                   <div>
                     <h4 className="font-medium mb-1">Téléphone</h4>
                     <a href="tel:+33612345678" className="text-[#d9d9d9] hover:text-[#fbc63d] transition-colors">
-                      +33 6 12 34 56 78
+                      +261 38 79 399 05
                     </a>
                   </div>
                 </motion.div>
