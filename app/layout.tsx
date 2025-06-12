@@ -12,6 +12,10 @@ export const metadata: Metadata = {
   description: 'Agence de création de sites web modernes, performants et sur mesure pour répondre aux besoins uniques de votre entreprise.',
   keywords: 'création site web, développement web, site vitrine, site e-commerce, refonte site web, Madagascar',
   authors: [{ name: 'I-Tsika Team' }],
+  icons: {
+    icon: '/img_logo.png',
+    apple: '/img_logo.png',
+  },
 }
 
 export default function RootLayout({
