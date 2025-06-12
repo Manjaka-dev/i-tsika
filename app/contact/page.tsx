@@ -14,7 +14,7 @@ export default function ContactPage() {
   const contactInfo = {
     email: "contact@i-tsika.site",
     phone: "+261 38 79 399 05",
-    address: "123 Avenue des Développeurs, 75000 Paris, France",
+    address: "Antananarivo, Madagascar",
     hours: "Lun - Ven: 9h - 18h"
   };
   
@@ -138,7 +138,7 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-medium mb-2">Adresse</h3>
                     <a 
-                      href="https://maps.google.com/?q=123+Avenue+des+Développeurs+75000+Paris+France" 
+                      href="https://maps.google.com/?q=Antananarivo+Madagascar" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="text-[#d9d9d9] hover:text-[#fbc63d] transition-colors"
@@ -218,48 +218,6 @@ export default function ContactPage() {
               </div>
             </motion.div>
           </div>
-        </div>
-      </section>
-
-      {/* Map section */}
-      <section className="py-24 bg-[#0c0c0a]">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <motion.h2
-              className="text-3xl font-bold mb-6"
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              Venez nous rencontrer
-            </motion.h2>
-            <motion.p
-              className="text-[#d9d9d9] max-w-2xl mx-auto"
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            >
-              Nous serions ravis de vous accueillir dans nos locaux pour discuter de votre projet autour d'un café.
-            </motion.p>
-          </div>
-          
-          <motion.div
-            className="rounded-2xl overflow-hidden h-[400px]"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.9914410396734!2d2.292292615509614!3d48.85837007928746!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e2964e34e2d%3A0x8ddca9ee380ef7e0!2sChamp%20de%20Mars%2C%20Paris%2C%20France!5e0!3m2!1sen!2sus!4v1623252076996!5m2!1sen!2sus"
-              style={{ border: 0, width: '100%', height: '100%' }}
-              allowFullScreen={true}
-              loading="lazy"
-              title="Notre adresse"
-            ></iframe>
-          </motion.div>
         </div>
       </section>
     </main>

@@ -173,11 +173,11 @@ export default function ProjectsGrid({
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.6 }}
           >
-            <Link href={ctaLink || "/portfolio"}>
+            {/* <Link href={ctaLink || "/portfolio"}>
               <Button className="bg-[#fbc63d] text-[#070602] hover:bg-[#ffbb00] hover:scale-105 px-6 py-2 rounded-full transition-all duration-300">
                 {ctaText || "Voir tous nos projets"}
               </Button>
-            </Link>
+            </Link> */}
           </motion.div>
         )}
       </div>

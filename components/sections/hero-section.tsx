@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 
@@ -22,7 +23,7 @@ export default function HeroSection({
   ctaText,
   ctaLink,
   imagePosition = "right",
-  backgroundImage = "/portfolio-hero.webp",
+  backgroundImage = "/hero.png",
   showPattern = true,
 }: HeroSectionProps) {
   // Animation variants
@@ -120,13 +121,16 @@ export default function HeroSection({
             }}
           >
             <div className="rounded-2xl bg-[#201f1b]/80 p-6 backdrop-blur-sm border border-[#fbc63d]/10">
-              <div className="overflow-hidden rounded-xl aspect-[4/3] relative">
-                {/* Animation or image can be added here */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-[#fbc63d] text-lg">
-                    {/* Placeholder for animation or image */}
-                  </div>
-                </div>
+              <div className="overflow-hidden rounded-xl aspect-[4/3] relative flex items-center justify-center">
+                {/* Logo image */}
+                <Image
+                  src="/logo.png"
+                  alt="I-Tsika Logo"
+                  width={300}
+                  height={300}
+                  className="object-contain"
+                  priority
+                />
               </div>
             </div>
 

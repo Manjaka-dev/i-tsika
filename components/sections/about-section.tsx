@@ -33,7 +33,7 @@ export default function AboutSection({
   stats = [],
   showCTA = true,
   ctaText = "En savoir plus",
-  ctaLink = "/a-propos",
+  ctaLink = "/about",
   imagePosition = "left",
 }: AboutSectionProps) {
   return (

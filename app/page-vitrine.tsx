@@ -240,7 +240,7 @@ export default function HomePage() {
         description="Transformez votre présence en ligne avec des solutions numériques innovantes qui reflètent l'identité unique de votre entreprise et maximisent votre impact sur le web."
         ctaText="Demander un devis gratuit"
         ctaLink="/devis"
-        backgroundImage="/portfolio-hero.webp"
+        backgroundImage="/hero.png"
       />
 
       {/* Section Services */}
