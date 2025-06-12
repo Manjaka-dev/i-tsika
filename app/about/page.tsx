@@ -105,7 +105,7 @@ export default function AboutPage() {
               <div className="relative">
                 <div className="rounded-3xl overflow-hidden">
                   <Image
-                    src="/placeholder.jpg"
+                    src="/nous.webp"
                     alt="Notre équipe"
                     width={600}
                     height={400}

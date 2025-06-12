@@ -24,13 +24,8 @@ const faqCategories = [
       },
       {
         id: "q3",
-        question: "Pourrai-je modifier moi-même le contenu de mon site ?",
-        answer: "Absolument ! Nous développons tous nos sites avec des systèmes de gestion de contenu (CMS) intuitifs qui vous permettent de modifier facilement vos textes, images et autres contenus. Nous vous fournissons également une formation complète pour vous familiariser avec l'administration de votre site."
-      },
-      {
-        id: "q4",
         question: "Est-ce que vous proposez aussi l'hébergement du site ?",
-        answer: "Oui, nous proposons des solutions d'hébergement adaptées à tous les types de projets. Nos forfaits d'hébergement incluent la maintenance technique, les sauvegardes régulières, et un monitoring de la disponibilité. Nous pouvons également vous aider à choisir et configurer votre nom de domaine."
+        answer: "Nous tenons à vous signaler qu'actuellement, nous ne disposons pas de solution d'hébergement. Nous pouvons vous diriger vers des sociétés tierces dignes de confiance, avec lesquelles nous entretenons une collaboration solide. Nous nous chargeons intégralement de l’installation ainsi que de la configuration des serveurs."
       }
     ]
   },
@@ -39,22 +34,22 @@ const faqCategories = [
     name: "Questions techniques",
     questions: [
       {
-        id: "q5",
+        id: "q4",
         question: "Qu'est-ce qu'un site responsive ?",
         answer: "Un site responsive est un site web dont le design s'adapte automatiquement à tous les appareils (ordinateurs, tablettes, smartphones) pour offrir une expérience utilisateur optimale. Tous nos sites sont créés avec une approche 'mobile-first', garantissant un affichage parfait sur tous les écrans."
       },
       {
-        id: "q6",
+        id: "q5",
         question: "Quelles technologies utilisez-vous pour développer vos sites ?",
-        answer: "Nous utilisons les technologies les plus modernes et performantes comme React, Next.js, et Tailwind CSS pour le front-end, ainsi que des solutions robustes pour le back-end selon les besoins du projet. Notre stack technologique est constamment mise à jour pour garantir des sites rapides, sécurisés et évolutifs."
+        answer: "Nous ne disposons pas d'une technologie unique, mais nous adaptons les technologies en fonction des exigences spécifiques du produit demandé par notre client."
+      },
+      {
+        id: "q6",
+        question: "Comment assurez-vous la sécurité des sites web ?",
+        answer: "La sécurité est une priorité pour nous. Nous mettons en œuvre les meilleures pratiques comme l'utilisation de certificats SSL, la protection contre les injections SQL et les attaques XSS ainsi que des mises à jour régulières des systèmes."
       },
       {
         id: "q7",
-        question: "Comment assurez-vous la sécurité des sites web ?",
-        answer: "La sécurité est une priorité pour nous. Nous mettons en œuvre les meilleures pratiques comme l'utilisation de certificats SSL, la protection contre les injections SQL et les attaques XSS, les mises à jour régulières des systèmes et des audits de sécurité périodiques. Nous proposons également des solutions de sauvegarde automatisées."
-      },
-      {
-        id: "q8",
         question: "Comment optimisez-vous la vitesse de chargement des sites ?",
         answer: "Nous optimisons la vitesse de chargement par diverses techniques : compression et optimisation des images, minification des fichiers CSS et JavaScript, mise en cache, utilisation de CDN (Content Delivery Network), et lazy loading pour les contenus lourds. Nous veillons à ce que tous nos sites obtiennent d'excellents scores sur les outils de mesure de performance comme Google PageSpeed Insights."
       }
@@ -66,17 +61,17 @@ const faqCategories = [
     name: "Maintenance et support",
     questions: [
       {
-        id: "q12",
+        id: "q8",
         question: "Proposez-vous un service de maintenance ?",
         answer: "Oui, nous proposons différentes formules de maintenance pour garder votre site à jour, sécurisé et performant. Ces formules incluent les mises à jour techniques, les sauvegardes régulières, la surveillance de la sécurité et un support en cas de problème. Nous proposons des contrats mensuels ou annuels selon vos besoins."
       },
       {
-        id: "q13",
+        id: "q9",
         question: "Que faire en cas de problème technique sur mon site ?",
         answer: "Nos clients sous contrat de maintenance bénéficient d'un support prioritaire avec des temps de réponse garantis. Selon la nature du problème, nous intervenons dans les délais prévus dans votre contrat. Pour les urgences, nous disposons d'un système d'astreinte qui permet une intervention rapide même en dehors des heures de bureau."
       },
       {
-        id: "q14",
+        id: "q10",
         question: "Puis-je faire évoluer mon site après sa mise en ligne ?",
         answer: "Absolument ! Nous concevons tous nos sites de façon modulaire pour permettre des évolutions futures. Que vous souhaitiez ajouter de nouvelles fonctionnalités, modifier le design ou intégrer de nouveaux contenus, votre site peut évoluer avec votre entreprise. Nous vous accompagnons dans ces évolutions pour garantir leur cohérence avec l'existant."
       }
@@ -87,17 +82,17 @@ const faqCategories = [
     name: "Tarifs et paiement",
     questions: [
       {
-        id: "q15",
+        id: "q11",
         question: "Comment sont calculés vos tarifs ?",
         answer: "Nos tarifs sont basés sur la complexité du projet, le nombre de fonctionnalités requises et le temps de développement estimé. Chaque projet étant unique, nous proposons toujours un devis personnalisé après avoir échangé sur vos besoins spécifiques. Nous travaillons en toute transparence et détaillons les différents postes de coûts."
       },
       {
-        id: "q16",
+        id: "q12",
         question: "Quelles sont les modalités de paiement ?",
         answer: "Nous demandons généralement un acompte de 30% à la signature du devis pour démarrer le projet, puis 40% à mi-parcours, et les 30% restants à la livraison. Pour les projets de maintenance, les paiements sont mensuels ou trimestriels selon la formule choisie. Nous acceptons les virements bancaires et les paiements par carte."
       },
       {
-        id: "q17",
+        id: "q13",
         question: "Proposez-vous des facilités de paiement ?",
         answer: "Oui, pour les projets importants, nous pouvons proposer des échéanciers de paiement adaptés à votre situation. N'hésitez pas à nous en parler lors de l'établissement du devis, nous trouverons une solution qui convient à votre budget et à vos contraintes financières."
       }
