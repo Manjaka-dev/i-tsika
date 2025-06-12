@@ -30,7 +30,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <Link href="/" className="flex items-center">
           <Image
-            src="/logo.webp"
+            src="/logo.png"
             alt="Logo"
             width={60}
             height={60}

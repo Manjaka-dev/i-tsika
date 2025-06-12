@@ -130,11 +130,19 @@ export default function DevisPage() {
       } catch (error) {
         console.error("Erreur lors de l'envoi de la demande de devis:", error);
         setFormSubmitting(false);
+        
+        // Détecter si l'erreur est liée à un problème de configuration
+        const errorMsg = error instanceof Error ? error.message : String(error);
+        const isConfigError = errorMsg.toLowerCase().includes('configuration') || 
+                            errorMsg.toLowerCase().includes('admin');
+                            
         setNotification({
           visible: true,
           type: "error",
-          title: "Erreur d'envoi",
-          message: "Une erreur s'est produite lors de l'envoi de votre demande. Veuillez réessayer plus tard."
+          title: isConfigError ? "Service temporairement indisponible" : "Erreur d'envoi",
+          message: isConfigError 
+            ? "Le service de messagerie est actuellement indisponible. Veuillez nous contacter directement via contact@i-tsika.site."
+            : "Une erreur s'est produite lors de l'envoi de votre demande. Veuillez réessayer plus tard."
         });
       }
     }
@@ -313,7 +321,7 @@ export default function DevisPage() {
         <div className="mt-12 flex flex-col items-center justify-center space-y-6 animate-fade-in" style={{ animationDelay: '600ms' }}>
           <div className="flex items-center space-x-2 text-[#7b7979] text-sm animate-float">
             <Mail className="w-4 h-4" />
-            <span>Vous pouvez également nous contacter directement à <a href="mailto:contact@example.com" className="text-[#fbc63d] hover:underline transition-all duration-300 hover:text-[#ffbb00]">contact@example.com</a></span>
+            <span>Vous pouvez également nous contacter directement à <a href="mailto:contact@i-tsika.site" className="text-[#fbc63d] hover:underline transition-all duration-300 hover:text-[#ffbb00]">contact@i-tsika.site</a></span>
           </div>
           
           <div className="flex space-x-3 mt-4">

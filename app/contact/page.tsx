@@ -12,7 +12,7 @@ export default function ContactPage() {
   
   // Coordonnées de contact
   const contactInfo = {
-    email: "contact@example.com",
+    email: "contact@i-tsika.site",
     phone: "+33 6 12 34 56 78",
     address: "123 Avenue des Développeurs, 75000 Paris, France",
     hours: "Lun - Ven: 9h - 18h"

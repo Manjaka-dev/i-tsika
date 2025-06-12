@@ -15,7 +15,7 @@ export default function Footer() {
           <div>
             <Link href="/" className="flex items-center mb-6">
               <Image
-                src="/logo.webp"
+                src="/logo.png"
                 alt="Logo"
                 width={80}
                 height={80}
@@ -136,11 +136,11 @@ export default function Footer() {
             <ul className="space-y-4">
               <li className="flex items-center">
                 <Mail className="w-5 h-5 text-[#fbc63d] mr-3" />
-                <span className="text-[#d9d9d9]">contact@example.com</span>
+                <span className="text-[#d9d9d9]">contact@i-tsika.site</span>
               </li>
               <li className="flex items-center">
                 <Phone className="w-5 h-5 text-[#fbc63d] mr-3" />
-                <span className="text-[#d9d9d9]">+1 (555) 123-4567</span>
+                <span className="text-[#d9d9d9]">+261 38 79 399 05</span>
               </li>
               <li className="flex items-start">
                 <MapPin className="w-5 h-5 text-[#fbc63d] mr-3 mt-1" />

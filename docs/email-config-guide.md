@@ -1,26 +1,43 @@
 # Guide de configuration du service d'email
 
-Ce projet utilise Nodemailer pour envoyer des emails directement depuis le serveur Next.js. Voici comment configurer correctement le service d'email.
+Ce projet utilise Nodemailer pour envoyer des emails directement depuis le serveur Next.js. Voici comment configurer correctement le service d'email en utilisant les variables d'environnement.
 
-## Configuration du serveur SMTP
+## Configuration du serveur SMTP via variables d'environnement
 
-### 1. Modifier les paramètres de connexion
+### 1. Créer un fichier .env.local
 
-Ouvrez le fichier `/lib/mail-config.ts` et remplacez les informations de connexion SMTP par celles de votre fournisseur d'email:
+Créez un fichier `.env.local` à la racine du projet (ce fichier ne sera pas commité dans le dépôt Git) et ajoutez les informations suivantes :
+
+```bash
+# Configuration Email
+EMAIL_HOST=smtp.votrefournisseur.com
+EMAIL_PORT=465
+EMAIL_SECURE=true
+EMAIL_USER=votre.email@example.com
+EMAIL_PASS=votre_mot_de_passe
+
+# Adresses email
+RECIPIENT_EMAIL=contact@i-tsika.site
+SENDER_EMAIL=noreply@i-tsika.site
+```
+
+Ces variables seront automatiquement utilisées par le fichier `/lib/mail-config.ts` :
 
 ```typescript
+// La configuration est automatiquement prise depuis les variables d'environnement
 export const mailConfig: MailConfigType = {
-  host: 'smtp.votrefournisseur.com', // Serveur SMTP
-  port: 465, // Port (généralement 465 pour SSL, 587 pour TLS)
-  secure: true, // true pour 465, false pour 587
+  host: process.env.EMAIL_HOST || 'smtp.gmail.com',
+  port: parseInt(process.env.EMAIL_PORT || '465'),
+  secure: process.env.EMAIL_SECURE === 'true',
   auth: {
-    user: 'votre.email@example.com', // Votre adresse email
-    pass: 'votre_mot_de_passe', // Votre mot de passe
+    user: process.env.EMAIL_USER || '',
+    pass: process.env.EMAIL_PASS || '',
   },
 };
 
-// Remplacez également l'adresse de destination
-export const RECIPIENT_EMAIL = 'destinataire@example.com';
+// Adresses email configurables
+export const RECIPIENT_EMAIL = process.env.RECIPIENT_EMAIL || 'contact@i-tsika.site';
+export const SENDER_EMAIL = process.env.SENDER_EMAIL || 'noreply@i-tsika.site';
 ```
 
 ### 2. Configuration selon le fournisseur d'email
@@ -66,35 +83,23 @@ export const ovhConfig: MailConfigType = {
 };
 ```
 
-## Utilisation de variables d'environnement (recommandé)
+## Configuration pour déploiement sur Vercel
 
-Pour une meilleure sécurité, il est recommandé d'utiliser des variables d'environnement pour stocker vos identifiants:
+Lorsque vous déployez votre application sur Vercel, vous devrez configurer les variables d'environnement dans l'interface de Vercel :
 
-1. Créez un fichier `.env.local` à la racine du projet avec les variables suivantes:
+1. Connectez-vous à votre tableau de bord Vercel
+2. Sélectionnez votre projet
+3. Allez dans "Settings" > "Environment Variables"
+4. Ajoutez chaque variable d'environnement mentionnée précédemment :
+   - EMAIL_HOST
+   - EMAIL_PORT
+   - EMAIL_SECURE
+   - EMAIL_USER
+   - EMAIL_PASS
+   - RECIPIENT_EMAIL
+   - SENDER_EMAIL
 
-```
-EMAIL_HOST=smtp.exemple.com
-EMAIL_PORT=465
-EMAIL_SECURE=true
-EMAIL_USER=votre.email@exemple.com
-EMAIL_PASS=votre_mot_de_passe
-RECIPIENT_EMAIL=destinataire@exemple.com
-```
-
-2. Utilisez la configuration suivante dans `mail-config.ts`:
-
-```typescript
-export const mailConfig: MailConfigType = {
-  host: process.env.EMAIL_HOST || 'smtp.gmail.com',
-  port: parseInt(process.env.EMAIL_PORT || '465'),
-  secure: process.env.EMAIL_SECURE === 'true',
-  auth: {
-    user: process.env.EMAIL_USER || '',
-    pass: process.env.EMAIL_PASS || '',
-  },
-};
-export const RECIPIENT_EMAIL = process.env.RECIPIENT_EMAIL || 'destinataire@exemple.com';
-```
+Assurez-vous que ces variables sont correctement configurées pour l'environnement de production. Vous pouvez également configurer différentes valeurs pour les environnements de développement, prévisualisation et production.
 
 ## Test de la configuration
 

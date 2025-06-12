@@ -1,19 +1,42 @@
 import nodemailer from 'nodemailer';
-import { mailConfig, RECIPIENT_EMAIL } from './mail-config';
+import { mailConfig, RECIPIENT_EMAIL, SENDER_EMAIL } from './mail-config';
 
-// Création du transporteur d'email
-const transporter = nodemailer.createTransport(mailConfig);
+// Création du transporteur d'email avec les paramètres Zoho Mail
+const transporter = nodemailer.createTransport({
+  host: 'smtppro.zoho.com',
+  port: 465,
+  secure: true,
+  auth: {
+    user: 'noreply@i-tsika.site',
+    pass: process.env.EMAIL_PASS
+  }
+});
 
 /**
  * Vérifie que le transporteur est correctement configuré
  */
 export const verifyMailConnection = async () => {
   try {
+    console.log('Tentative de connexion au serveur email avec la configuration:');
+    console.log(`- Serveur: ${process.env.EMAIL_HOST || 'smtppro.zoho.com'}`);
+    console.log(`- Port: ${process.env.EMAIL_PORT || '465'}`);
+    console.log(`- Secure: ${process.env.EMAIL_SECURE !== 'false' ? 'true' : 'false'}`);
+    console.log(`- Utilisateur: ${process.env.EMAIL_USER || 'noreply@i-tsika.site'}`);
+    
     const verification = await transporter.verify();
-    console.log('Connexion au serveur email réussie:', verification);
+    console.log('✅ Connexion au serveur email réussie:', verification);
     return verification;
-  } catch (error) {
-    console.error('Erreur lors de la connexion au serveur email:', error);
+  } catch (error: any) {
+    console.error('❌ Erreur lors de la connexion au serveur email:', error);
+    console.error('Message d\'erreur:', error.message);
+    
+    if (error.message && error.message.includes('Authentication')) {
+      console.error('⚠️ Problème d\'authentification détecté. Vérifiez vos identifiants Zoho Mail.');
+      console.error('- Assurez-vous que le mot de passe est correct dans .env.local');
+      console.error('- Pour Zoho Mail, vous devrez peut-être créer un mot de passe d\'application spécifique');
+      console.error('- Vérifiez que l\'accès SMTP est activé dans votre compte Zoho Mail');
+    }
+    
     throw error;
   }
 };
@@ -24,7 +47,7 @@ export const verifyMailConnection = async () => {
 export const sendContactEmail = async (name: string, email: string, message: string) => {
   try {
     const mailOptions = {
-      from: `"${name}" <${email}>`,
+      from: `"Site I-Tsika" <${SENDER_EMAIL}>`,
       to: RECIPIENT_EMAIL,
       replyTo: email,
       subject: `Nouveau message de contact de ${name}`,
@@ -69,7 +92,7 @@ export const sendQuoteEmail = async (
 ) => {
   try {
     const mailOptions = {
-      from: email,
+      from: `"Site I-Tsika" <${SENDER_EMAIL}>`,
       to: RECIPIENT_EMAIL,
       replyTo: email,
       subject: `Nouvelle demande de devis : ${projectName}`,

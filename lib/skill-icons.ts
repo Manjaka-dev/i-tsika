@@ -64,7 +64,7 @@ export const skillIcons = {
 };
 
 // Fallback pour les icônes manquantes
-export const fallbackIcon = "/logo.webp";
+export const fallbackIcon = "/logo.png";
 
 /**
  * Récupère l'URL de l'icône par nom de compétence

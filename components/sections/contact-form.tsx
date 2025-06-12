@@ -107,11 +107,19 @@ export default function ContactForm() {
       } catch (error) {
         console.error("Erreur lors de l'envoi du formulaire:", error);
         setFormSubmitting(false);
+        
+        // Détecter si l'erreur est liée à un problème de configuration
+        const errorMsg = error instanceof Error ? error.message : String(error);
+        const isConfigError = errorMsg.toLowerCase().includes('configuration') || 
+                            errorMsg.toLowerCase().includes('admin');
+                            
         setNotification({
           visible: true,
           type: "error",
-          title: "Erreur d'envoi",
-          message: "Une erreur s'est produite lors de l'envoi du message. Veuillez réessayer plus tard."
+          title: isConfigError ? "Service temporairement indisponible" : "Erreur d'envoi",
+          message: isConfigError 
+            ? "Le service de messagerie est actuellement indisponible. Veuillez nous contacter directement par téléphone ou via notre adresse email."
+            : "Une erreur s'est produite lors de l'envoi du message. Veuillez réessayer plus tard."
         });
       }
     }

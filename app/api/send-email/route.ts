@@ -1,11 +1,21 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { sendContactEmail, sendQuoteEmail } from '@/lib/mail-service';
+import { checkEmailConfig } from '@/lib/env-check';
 
 /**
  * API centralisée pour l'envoi d'emails
  * Cette API gère les demandes d'envoi d'emails pour le formulaire de contact et le formulaire de devis
  */
 export async function POST(request: NextRequest) {
+  // Vérifier d'abord si la configuration email est correcte
+  const { isConfigured, missingVars } = checkEmailConfig();
+  if (!isConfigured) {
+    console.error(`Erreur de configuration email: Variables manquantes: ${missingVars.join(', ')}`);
+    return NextResponse.json({ 
+      success: false, 
+      error: 'Le service d\'email n\'est pas correctement configuré. Veuillez contacter l\'administrateur.' 
+    }, { status: 500 });
+  }
   try {
     const data = await request.json();
     const { type } = data;

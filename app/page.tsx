@@ -294,8 +294,8 @@ export default function HomePage() {
                   </div>
                   <div>
                     <h4 className="font-medium mb-1">Email</h4>
-                    <a href="mailto:contact@example.com" className="text-[#d9d9d9] hover:text-[#fbc63d] transition-colors">
-                      contact@example.com
+                    <a href="mailto:contact@i-tsika.site" className="text-[#d9d9d9] hover:text-[#fbc63d] transition-colors">
+                      contact@i-tsika.site
                     </a>
                   </div>
                 </motion.div>

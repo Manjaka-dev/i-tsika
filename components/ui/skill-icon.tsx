@@ -35,7 +35,7 @@ export default function SkillIcon({ name, logo, size = 20, className = "", withT
   const localIconPath = `/icons/${iconName}.svg`;
   
   // Chemin de l'icône de fallback
-  const fallbackIcon = "/logo.webp";
+  const fallbackIcon = "/logo.png";
 
   // Fonction de gestion d'erreur
   const handleError = () => {

@@ -2,6 +2,10 @@ import type { Metadata } from 'next'
 import './globals.css'
 import Header from '@/components/layout/header'
 import Footer from '@/components/layout/footer'
+import AppInitializer from '@/components/app-initializer'
+
+// Import de l'initialisation serveur (s'exécute au démarrage)
+import '@/lib/server-init'
 
 export const metadata: Metadata = {
   title: 'I-Tsika - Création de sites web sur mesure',
@@ -18,6 +22,7 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body className="bg-[#070602] text-[#ffffff] min-h-screen flex flex-col">
+        <AppInitializer />
         <Header />
         <main className="flex-grow pt-20">
           {children}
