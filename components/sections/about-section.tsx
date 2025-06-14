@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface ValueItem {
   title: string;
@@ -36,18 +37,25 @@ export default function AboutSection({
   ctaLink = "/about",
   imagePosition = "left",
 }: AboutSectionProps) {
+  // Détecter si l'affichage est mobile
+  const isMobile = useIsMobile();
+  
   return (
-    <section className="py-20">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-16 md:py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div 
-          className={`flex flex-col gap-12 items-center ${
-            imagePosition === "left" ? "lg:flex-row" : "lg:flex-row-reverse"
+          className={`flex flex-col gap-8 md:gap-12 items-center ${
+            isMobile 
+              ? "" 
+              : imagePosition === "left" 
+                ? "lg:flex-row" 
+                : "lg:flex-row-reverse"
           }`}
         >
           {/* Image side */}
           <motion.div 
-            className="w-full lg:w-1/2"
-            initial={{ opacity: 0, x: imagePosition === "left" ? -40 : 40 }}
+            className={`w-full ${isMobile ? "" : "lg:w-1/2"}`}
+            initial={{ opacity: 0, x: isMobile ? 0 : (imagePosition === "left" ? -40 : 40) }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
@@ -59,33 +67,33 @@ export default function AboutSection({
                   alt="À propos de nous"
                   width={600}
                   height={400}
-                  className="w-full object-cover h-[400px]"
+                  className="w-full object-cover h-[300px] md:h-[400px]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-[#070602]/60 to-transparent"></div>
               </div>
               
-              {/* Stats overlay (if provided) */}
+              {/* Stats overlay (if provided) - Adapté pour mobile */}
               {stats.length > 0 && (
-                <div className="absolute -bottom-8 -right-8 bg-[#201f1b] p-6 rounded-2xl shadow-lg grid grid-cols-2 gap-6 md:gap-12">
+                <div className={`absolute ${isMobile ? "-bottom-6 right-4 scale-90" : "-bottom-8 -right-8"} bg-[#201f1b] p-4 md:p-6 rounded-2xl shadow-lg grid grid-cols-2 gap-4 md:gap-12`}>
                   {stats.map((stat, index) => (
                     <div key={index} className="text-center">
-                      <p className="text-[#fbc63d] text-3xl md:text-4xl font-bold mb-2">{stat.value}</p>
-                      <p className="text-white text-sm">{stat.label}</p>
+                      <p className="text-[#fbc63d] text-2xl md:text-3xl lg:text-4xl font-bold mb-1 md:mb-2">{stat.value}</p>
+                      <p className="text-white text-xs md:text-sm">{stat.label}</p>
                     </div>
                   ))}
                 </div>
               )}
 
-              {/* Decorative elements */}
-              <div className="absolute -top-6 -left-6 w-32 h-32 rounded-full border-4 border-[#fbc63d]/30 z-10"></div>
+              {/* Decorative elements - Réduits sur mobile */}
+              <div className={`absolute -top-6 -left-6 ${isMobile ? "w-24 h-24" : "w-32 h-32"} rounded-full border-4 border-[#fbc63d]/30 z-10`}></div>
               <div className="absolute -z-10 bottom-1/3 -right-8 w-16 h-16 bg-[#fbc63d] rounded-full blur-2xl opacity-20"></div>
             </div>
           </motion.div>
 
           {/* Content side */}
-          <div className="w-full lg:w-1/2">
+          <div className={`w-full ${isMobile ? "" : "lg:w-1/2"}`}>
             <motion.span
-              className="text-[#fbc63d] uppercase tracking-wider text-sm font-medium mb-3 block"
+              className="text-[#fbc63d] uppercase tracking-wider text-sm font-medium mb-2 md:mb-3 block"
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -95,7 +103,7 @@ export default function AboutSection({
             </motion.span>
             
             <motion.h2
-              className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6"
+              className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 md:mb-6"
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -105,7 +113,7 @@ export default function AboutSection({
             </motion.h2>
             
             <motion.div
-              className="text-[#d9d9d9] text-lg space-y-4 mb-8"
+              className="text-[#d9d9d9] text-base md:text-lg space-y-4 mb-6 md:mb-8"
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -116,21 +124,30 @@ export default function AboutSection({
             {/* Values list */}
             {values.length > 0 && (
               <motion.div
-                className="space-y-4 mb-8"
+                className="space-y-3 md:space-y-4 mb-6 md:mb-8"
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.3 }}
               >
-                {values.map((value, index) => (
-                  <div key={index} className="flex gap-4">
-                    <CheckCircle2 className="w-6 h-6 text-[#fbc63d] shrink-0 mt-1" />
-                    <div>
-                      <h3 className="text-lg font-medium text-white mb-1">{value.title}</h3>
-                      <p className="text-sm text-[#d9d9d9]">{value.description}</p>
+                <h3 className="font-medium text-lg md:text-xl mb-3">Nos valeurs</h3>
+                
+                <div className={`grid ${isMobile ? "grid-cols-1" : "sm:grid-cols-2"} gap-4`}>
+                  {values.map((value, index) => (
+                    <div 
+                      key={index} 
+                      className="flex items-start"
+                    >
+                      <div className="text-[#fbc63d] mr-2 mt-1">
+                        <CheckCircle2 className="w-5 h-5" />
+                      </div>
+                      <div>
+                        <h4 className="font-medium">{value.title}</h4>
+                        <p className="text-[#d9d9d9] text-sm md:text-base">{value.description}</p>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </motion.div>
             )}
 
@@ -143,7 +160,9 @@ export default function AboutSection({
                 transition={{ duration: 0.5, delay: 0.4 }}
               >
                 <Link href={ctaLink}>
-                  <Button className="bg-[#fbc63d] text-[#070602] hover:bg-[#ffbb00] hover:scale-105 px-8 py-3 rounded-full text-sm font-medium transition-all duration-300">
+                  <Button 
+                    className="bg-[#fbc63d] text-[#070602] hover:bg-[#ffbb00] hover:scale-105 px-6 py-2.5 md:px-8 md:py-3 rounded-full text-sm font-medium transition-all duration-300"
+                  >
                     {ctaText}
                   </Button>
                 </Link>

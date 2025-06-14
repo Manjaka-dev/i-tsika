@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -84,55 +85,70 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Menu mobile */}
-      {mobileMenuOpen && (
-        <div className="md:hidden bg-[#070602]/98 backdrop-blur-md absolute w-full">
-          <div className="flex flex-col p-6 space-y-4">
+      {/* Menu mobile avec animation */}
+      <motion.div 
+        initial={{ height: 0, opacity: 0 }}
+        animate={{ 
+          height: mobileMenuOpen ? "auto" : 0,
+          opacity: mobileMenuOpen ? 1 : 0
+        }}
+        transition={{ duration: 0.3 }}
+        className="md:hidden overflow-hidden bg-[#070602]/98 backdrop-blur-md absolute w-full"
+      >
+        <div className="flex flex-col p-6 space-y-4">
+          {/* Sections principales */}
+          <div className="border-b border-[#fbc63d]/20 pb-4">
             <Link
               href="/"
-              className="text-white hover:text-[#fbc63d] py-2"
+              className="flex items-center text-white hover:text-[#fbc63d] py-3"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Accueil
+              <span className="text-[#fbc63d] mr-2">01.</span> Accueil
             </Link>
             <Link
               href="/about"
-              className="text-white hover:text-[#fbc63d] py-2"
+              className="flex items-center text-white hover:text-[#fbc63d] py-3"
               onClick={() => setMobileMenuOpen(false)}
             >
-              À propos
+              <span className="text-[#fbc63d] mr-2">02.</span> À propos
             </Link>
             <Link
               href="/services"
-              className="text-white hover:text-[#fbc63d] py-2"
+              className="flex items-center text-white hover:text-[#fbc63d] py-3"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Services
+              <span className="text-[#fbc63d] mr-2">03.</span> Services
             </Link>
-
-  
+          </div>
+          
+          {/* Sections secondaires */}
+          <div className="border-b border-[#fbc63d]/20 pb-4">
             <Link
               href="/faq"
-              className="text-white hover:text-[#fbc63d] py-2"
+              className="flex items-center text-white hover:text-[#fbc63d] py-3"
               onClick={() => setMobileMenuOpen(false)}
             >
-              FAQ
+              <span className="text-[#fbc63d] mr-2">•</span> FAQ
             </Link>
             <Link
               href="/contact"
-              className="text-white hover:text-[#fbc63d] py-2"
+              className="flex items-center text-white hover:text-[#fbc63d] py-3"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Contact
+              <span className="text-[#fbc63d] mr-2">•</span> Contact
             </Link>
+          </div>
+          
+          {/* CTA */}
+          <div className="pt-2">
             <Link href="/devis" onClick={() => setMobileMenuOpen(false)}>
-              <Button className="w-full bg-[#fbc63d] text-[#070602] hover:bg-[#ffbb00] font-medium rounded-full py-2">
+              <Button className="w-full bg-[#fbc63d] text-[#070602] hover:bg-[#ffbb00] font-medium rounded-full py-3 mt-2">
                 Demander un devis
               </Button>
             </Link>
           </div>
         </div>
-      )}
+      </motion.div>
     </header>
   );
 }

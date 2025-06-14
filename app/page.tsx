@@ -12,8 +12,12 @@ import ServicesList from "@/components/sections/services-list";
 import ProjectsGrid from "@/components/sections/projects-grid";
 import ContactForm from "@/components/sections/contact-form";
 import SocialButton from "@/components/ui/social-button";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export default function HomePage() {
+  // État pour détecter si l'affichage est mobile
+  const isMobile = useIsMobile();
+  
   // Données pour les sections
   // Services
   const services = [
@@ -145,11 +149,11 @@ export default function HomePage() {
       </section>
 
       {/* Section FAQ */}
-      <section id="faq" className="py-24">
-        <div className="max-w-4xl mx-auto px-6">
-          <div className="text-center mb-16">
+      <section id="faq" className="py-16 md:py-24">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-10 md:mb-16">
             <motion.span
-              className="text-[#fbc63d] uppercase tracking-wider text-sm font-medium mb-3 block"
+              className="text-[#fbc63d] uppercase tracking-wider text-sm font-medium mb-2 md:mb-3 block"
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -158,7 +162,7 @@ export default function HomePage() {
               Foire aux questions
             </motion.span>
             <motion.h2 
-              className="text-4xl md:text-5xl font-bold mb-6"
+              className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6"
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -167,7 +171,7 @@ export default function HomePage() {
               Questions fréquentes
             </motion.h2>
             <motion.p 
-              className="text-[#d9d9d9]"
+              className="text-[#d9d9d9] text-base md:text-lg"
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -177,7 +181,7 @@ export default function HomePage() {
             </motion.p>
           </div>
           
-          <div className="space-y-6">
+          <div className="space-y-4 md:space-y-6">
             {faqs.map((faq, index) => (
               <motion.div
                 key={index}
@@ -188,9 +192,9 @@ export default function HomePage() {
                 transition={{ duration: 0.5, delay: 0.1 * index }}
               >
                 <details className="group">
-                  <summary className="flex justify-between items-center p-6 cursor-pointer">
-                    <h3 className="text-lg font-medium">{faq.question}</h3>
-                    <span className="relative flex-shrink-0 ml-4 w-5 h-5">
+                  <summary className={`flex justify-between items-center ${isMobile ? 'p-4 text-sm' : 'p-6'} cursor-pointer`}>
+                    <h3 className={`${isMobile ? 'text-base' : 'text-lg'} font-medium pr-2`}>{faq.question}</h3>
+                    <span className="relative flex-shrink-0 ml-2 md:ml-4 w-5 h-5">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="absolute inset-0 w-5 h-5 opacity-100 group-open:opacity-0 transition-opacity duration-300"
@@ -221,8 +225,8 @@ export default function HomePage() {
                       </svg>
                     </span>
                   </summary>
-                  <div className="px-6 pb-6 pt-0">
-                    <p className="text-[#d9d9d9]">{faq.answer}</p>
+                  <div className={`${isMobile ? 'px-4 pb-4 pt-0 text-sm' : 'px-6 pb-6 pt-0'}`}>
+                    <p className="text-[#d9d9d9] text-sm md:text-base">{faq.answer}</p>
                   </div>
                 </details>
               </motion.div>
@@ -230,17 +234,17 @@ export default function HomePage() {
           </div>
           
           <motion.div 
-            className="mt-12 text-center"
+            className="mt-8 md:mt-12 text-center"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.6 }}
           >
-            <p className="text-[#d9d9d9] mb-4">
+            <p className="text-[#d9d9d9] mb-4 text-sm md:text-base">
               Vous ne trouvez pas la réponse à votre question ?
             </p>
             <Link href="/contact">
-              <Button className="bg-[#fbc63d] text-[#070602] hover:bg-[#ffbb00] hover:scale-105 px-6 py-2 rounded-full transition-all duration-300">
+              <Button className={`bg-[#fbc63d] text-[#070602] hover:bg-[#ffbb00] hover:scale-105 ${isMobile ? 'w-full mx-auto max-w-xs' : ''} px-6 py-2.5 md:px-6 md:py-2 rounded-full transition-all duration-300`}>
                 Contactez-nous
               </Button>
             </Link>
@@ -263,7 +267,7 @@ export default function HomePage() {
                 Contactez-nous
               </motion.span>
               <motion.h2 
-                className="text-4xl md:text-5xl font-bold mb-6"
+                className={`${isMobile ? 'text-3xl' : 'text-4xl md:text-5xl'} font-bold mb-6`}
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -278,10 +282,10 @@ export default function HomePage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
-                Que vous ayez des questions, besoin d'un devis précis ou simplement envie d'en savoir plus sur nos services, nous sommes là pour vous aider. Remplissez le formulaire ou utilisez les coordonnées ci-dessous pour nous contacter.
+                Que vous ayez des questions, besoin d'un devis précis ou simplement envie d'en savoir plus sur nos services, nous sommes là pour vous aider. {isMobile ? '' : 'Remplissez le formulaire ou utilisez les coordonnées ci-dessous pour nous contacter.'}
               </motion.p>
               
-              <div className="space-y-6">
+              <div className={`${isMobile ? 'grid grid-cols-1 gap-6' : 'space-y-6'}`}>
                 <motion.div 
                   className="flex items-start"
                   initial={{ opacity: 0, y: 10 }}
@@ -312,7 +316,7 @@ export default function HomePage() {
                   </div>
                   <div>
                     <h4 className="font-medium mb-1">Téléphone</h4>
-                    <a href="tel:+33612345678" className="text-[#d9d9d9] hover:text-[#fbc63d] transition-colors">
+                    <a href="tel:+261387939905" className="text-[#d9d9d9] hover:text-[#fbc63d] transition-colors">
                       +261 38 79 399 05
                     </a>
                   </div>
@@ -349,10 +353,10 @@ export default function HomePage() {
       </section>
       
       {/* Appel à l'action final */}
-      <section className="py-20 bg-[#fbc63d] text-[#070602]">
+      <section className="py-16 md:py-20 bg-[#fbc63d] text-[#070602]">
         <div className="max-w-5xl mx-auto px-6 text-center">
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold mb-6"
+            className={`${isMobile ? 'text-3xl' : 'text-4xl md:text-5xl'} font-bold mb-6`}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -361,7 +365,7 @@ export default function HomePage() {
             Prêt à transformer votre présence en ligne ?
           </motion.h2>
           <motion.p 
-            className="text-lg mb-12 max-w-2xl mx-auto"
+            className={`${isMobile ? 'text-base' : 'text-lg'} mb-8 md:mb-12 max-w-2xl mx-auto`}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -376,7 +380,7 @@ export default function HomePage() {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <Link href="/devis">
-              <Button className="bg-[#070602] text-white hover:bg-[#201f1b] hover:scale-105 px-8 py-6 rounded-full text-base font-medium transition-all duration-300">
+              <Button className={`bg-[#070602] text-white hover:bg-[#201f1b] hover:scale-105 ${isMobile ? 'w-full max-w-xs' : ''} px-6 py-4 md:px-8 md:py-6 rounded-full text-base font-medium transition-all duration-300`}>
                 Demander un devis gratuit
               </Button>
             </Link>
