@@ -192,9 +192,9 @@ export default function HomePage() {
                 transition={{ duration: 0.5, delay: 0.1 * index }}
               >
                 <details className="group">
-                  <summary className={`flex justify-between items-center ${isMobile ? 'p-4 text-sm' : 'p-6'} cursor-pointer`}>
-                    <h3 className={`${isMobile ? 'text-base' : 'text-lg'} font-medium pr-2`}>{faq.question}</h3>
-                    <span className="relative flex-shrink-0 ml-2 md:ml-4 w-5 h-5">
+                  <summary className={`flex justify-between items-center ${isMobile ? 'p-4 text-sm' : 'p-6'} cursor-pointer`} aria-expanded="false">
+                    <span className={`${isMobile ? 'text-base' : 'text-lg'} font-medium pr-2`}>{faq.question}</span>
+                    <span className="relative flex-shrink-0 ml-2 md:ml-4 w-5 h-5" aria-hidden="true">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="absolute inset-0 w-5 h-5 opacity-100 group-open:opacity-0 transition-opacity duration-300"
@@ -202,6 +202,9 @@ export default function HomePage() {
                         viewBox="0 0 24 24"
                         stroke="currentColor"
                         strokeWidth={2}
+                        aria-hidden="true"
+                        role="img"
+                        focusable="false"
                       >
                         <path
                           strokeLinecap="round"
@@ -216,6 +219,9 @@ export default function HomePage() {
                         viewBox="0 0 24 24"
                         stroke="currentColor"
                         strokeWidth={2}
+                        aria-hidden="true"
+                        role="img"
+                        focusable="false"
                       >
                         <path
                           strokeLinecap="round"
@@ -243,8 +249,8 @@ export default function HomePage() {
             <p className="text-[#d9d9d9] mb-4 text-sm md:text-base">
               Vous ne trouvez pas la réponse à votre question ?
             </p>
-            <Link href="/contact">
-              <Button className={`bg-[#fbc63d] text-[#070602] hover:bg-[#ffbb00] hover:scale-105 ${isMobile ? 'w-full mx-auto max-w-xs' : ''} px-6 py-2.5 md:px-6 md:py-2 rounded-full transition-all duration-300`}>
+            <Link href="/contact" aria-label="Contactez-nous pour plus d'informations">
+              <Button className={`bg-[#fbc63d] text-[#070602] hover:bg-[#ffbb00] hover:scale-105 ${isMobile ? 'w-full mx-auto max-w-xs' : ''} px-6 py-2.5 md:px-6 md:py-2 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#070602]`}>
                 Contactez-nous
               </Button>
             </Link>
@@ -294,11 +300,11 @@ export default function HomePage() {
                   transition={{ duration: 0.5, delay: 0.3 }}
                 >
                   <div className="w-12 h-12 bg-[#201f1b] rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                    <Mail className="w-5 h-5 text-[#fbc63d]" />
+                    <Mail className="w-5 h-5 text-[#fbc63d]" aria-hidden="true" />
                   </div>
                   <div>
-                    <h4 className="font-medium mb-1">Email</h4>
-                    <a href="mailto:contact@i-tsika.site" className="text-[#d9d9d9] hover:text-[#fbc63d] transition-colors">
+                    <h3 className="font-medium mb-1">Email</h3>
+                    <a href="mailto:contact@i-tsika.site" className="text-[#d9d9d9] hover:text-[#fbc63d] transition-colors focus:outline-none focus:ring-2 focus:ring-[#fbc63d] rounded-sm">
                       contact@i-tsika.site
                     </a>
                   </div>
@@ -312,11 +318,11 @@ export default function HomePage() {
                   transition={{ duration: 0.5, delay: 0.4 }}
                 >
                   <div className="w-12 h-12 bg-[#201f1b] rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                    <Phone className="w-5 h-5 text-[#fbc63d]" />
+                    <Phone className="w-5 h-5 text-[#fbc63d]" aria-hidden="true" />
                   </div>
                   <div>
-                    <h4 className="font-medium mb-1">Téléphone</h4>
-                    <a href="tel:+261387939905" className="text-[#d9d9d9] hover:text-[#fbc63d] transition-colors">
+                    <h3 className="font-medium mb-1">Téléphone</h3>
+                    <a href="tel:+261387939905" className="text-[#d9d9d9] hover:text-[#fbc63d] transition-colors focus:outline-none focus:ring-2 focus:ring-[#fbc63d] rounded-sm">
                       +261 38 79 399 05
                     </a>
                   </div>
@@ -330,10 +336,10 @@ export default function HomePage() {
                   transition={{ duration: 0.5, delay: 0.5 }}
                 >
                   <div className="w-12 h-12 bg-[#201f1b] rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                    <MapPin className="w-5 h-5 text-[#fbc63d]" />
+                    <MapPin className="w-5 h-5 text-[#fbc63d]" aria-hidden="true" />
                   </div>
                   <div>
-                    <h4 className="font-medium mb-1">Adresse</h4>
+                    <h3 className="font-medium mb-1">Adresse</h3>
                     <p className="text-[#d9d9d9]">
                       123 Avenue des Développeurs<br />
                       75000 Paris, France

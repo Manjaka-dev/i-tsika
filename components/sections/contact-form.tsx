@@ -127,6 +127,8 @@ export default function ContactForm() {
 
   return (
     <div className="bg-[#201f1b] rounded-3xl p-8 relative">
+      <h2 id="contact-form-title" className="text-xl md:text-2xl font-semibold mb-6">Contactez-nous</h2>
+      
       <Notification
         isVisible={notification.visible}
         type={notification.type}
@@ -154,19 +156,24 @@ export default function ContactForm() {
           </Button>
         </div>
       ) : (
-        <form className="space-y-6 animate-fade-in" onSubmit={handleSubmit}>
+        <form className="space-y-6 animate-fade-in" onSubmit={handleSubmit} aria-labelledby="contact-form-title" role="form">
           <div>
             <div className="relative">
+              <label htmlFor="contact-name" className="sr-only">Nom</label>
               <input
+                id="contact-name"
                 type="text"
                 name="name"
                 placeholder="Votre nom"
                 value={formData.name}
                 onChange={handleChange}
-                className={`w-full p-4 bg-[#0c0c0a] border ${formErrors.name ? 'border-red-500' : 'border-[#7b7979]'} rounded-2xl text-white placeholder-[#7b7979] focus:border-[#fbc63d] focus:outline-none transition-all duration-300`}
+                aria-required="true"
+                aria-invalid={!!formErrors.name}
+                aria-describedby={formErrors.name ? "name-error" : undefined}
+                className={`w-full p-4 bg-[#0c0c0a] border ${formErrors.name ? 'border-red-500' : 'border-[#7b7979]'} rounded-2xl text-white placeholder-[#7b7979] focus:border-[#fbc63d] focus:outline-none focus:ring-2 focus:ring-[#fbc63d] focus:ring-opacity-50 transition-all duration-300`}
               />
               {formErrors.name && (
-                <p className="text-red-500 text-xs mt-1 ml-1">
+                <p id="name-error" className="text-red-500 text-xs mt-1 ml-1" aria-live="polite">
                   {formErrors.name}
                 </p>
               )}
@@ -174,16 +181,21 @@ export default function ContactForm() {
           </div>
           <div>
             <div className="relative">
+              <label htmlFor="contact-email" className="sr-only">Email</label>
               <input
+                id="contact-email"
                 type="email"
                 name="email"
                 placeholder="Votre email"
                 value={formData.email}
                 onChange={handleChange}
-                className={`w-full p-4 bg-[#0c0c0a] border ${formErrors.email ? 'border-red-500' : 'border-[#7b7979]'} rounded-2xl text-white placeholder-[#7b7979] focus:border-[#fbc63d] focus:outline-none transition-all duration-300`}
+                aria-required="true"
+                aria-invalid={!!formErrors.email}
+                aria-describedby={formErrors.email ? "email-error" : undefined}
+                className={`w-full p-4 bg-[#0c0c0a] border ${formErrors.email ? 'border-red-500' : 'border-[#7b7979]'} rounded-2xl text-white placeholder-[#7b7979] focus:border-[#fbc63d] focus:outline-none focus:ring-2 focus:ring-[#fbc63d] focus:ring-opacity-50 transition-all duration-300`}
               />
               {formErrors.email && (
-                <p className="text-red-500 text-xs mt-1 ml-1">
+                <p id="email-error" className="text-red-500 text-xs mt-1 ml-1" aria-live="polite">
                   {formErrors.email}
                 </p>
               )}
@@ -191,16 +203,21 @@ export default function ContactForm() {
           </div>
           <div>
             <div className="relative">
+              <label htmlFor="contact-message" className="sr-only">Message</label>
               <textarea
+                id="contact-message"
                 placeholder="Votre message"
                 name="message"
                 rows={4}
                 value={formData.message}
                 onChange={handleChange}
-                className={`w-full p-4 bg-[#0c0c0a] border ${formErrors.message ? 'border-red-500' : 'border-[#7b7979]'} rounded-2xl text-white placeholder-[#7b7979] focus:border-[#fbc63d] focus:outline-none resize-none transition-all duration-300`}
+                aria-required="true"
+                aria-invalid={!!formErrors.message}
+                aria-describedby={formErrors.message ? "message-error" : undefined}
+                className={`w-full p-4 bg-[#0c0c0a] border ${formErrors.message ? 'border-red-500' : 'border-[#7b7979]'} rounded-2xl text-white placeholder-[#7b7979] focus:border-[#fbc63d] focus:outline-none focus:ring-2 focus:ring-[#fbc63d] focus:ring-opacity-50 resize-none transition-all duration-300`}
               ></textarea>
               {formErrors.message && (
-                <p className="text-red-500 text-xs mt-1 ml-1">
+                <p id="message-error" className="text-red-500 text-xs mt-1 ml-1" aria-live="polite">
                   {formErrors.message}
                 </p>
               )}

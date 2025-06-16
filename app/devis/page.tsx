@@ -196,19 +196,25 @@ export default function DevisPage() {
               </Button>
             </div>
           ) : (
-            <form className="space-y-6 animate-fade-in" onSubmit={handleSubmit}>
+            <form className="space-y-6 animate-fade-in" onSubmit={handleSubmit} aria-labelledby="devis-form-title" role="form">
+              <h2 id="devis-form-title" className="sr-only">Formulaire de demande de devis</h2>
               <div className="animate-fade-in" style={{ animationDelay: '100ms' }}>
                 <div className="relative">
+                  <label htmlFor="projectName" className="sr-only">Nom du projet</label>
                   <input
+                    id="projectName"
                     type="text"
                     name="projectName"
                     placeholder="Nom du projet"
                     value={formData.projectName}
                     onChange={handleChange}
-                    className={`w-full p-4 bg-[#0c0c0a] border ${formErrors.projectName ? 'border-red-500' : 'border-[#7b7979]'} rounded-2xl text-white placeholder-[#7b7979] focus:border-[#fbc63d] focus:outline-none transition-all duration-300 hover:border-[#a7a6a5] focus:animate-scale-in`}
+                    aria-required="true"
+                    aria-invalid={!!formErrors.projectName}
+                    aria-describedby={formErrors.projectName ? "projectName-error" : undefined}
+                    className={`w-full p-4 bg-[#0c0c0a] border ${formErrors.projectName ? 'border-red-500' : 'border-[#7b7979]'} rounded-2xl text-white placeholder-[#7b7979] focus:border-[#fbc63d] focus:outline-none focus:ring-2 focus:ring-[#fbc63d] focus:ring-opacity-50 transition-all duration-300 hover:border-[#a7a6a5] focus:animate-scale-in`}
                   />
                   {formErrors.projectName && (
-                    <p className="text-red-500 text-xs mt-1 ml-1 animate-fade-in">
+                    <p id="projectName-error" className="text-red-500 text-xs mt-1 ml-1 animate-fade-in" aria-live="polite">
                       {formErrors.projectName}
                     </p>
                   )}
@@ -217,11 +223,16 @@ export default function DevisPage() {
               
               <div className="animate-fade-in" style={{ animationDelay: '200ms' }}>
                 <div className="relative">
+                  <label htmlFor="domain" className="sr-only">Domaine du projet</label>
                   <select
+                    id="domain"
                     name="domain"
                     value={formData.domain}
                     onChange={handleChange}
-                    className={`w-full p-4 bg-[#0c0c0a] border ${formErrors.domain ? 'border-red-500' : 'border-[#7b7979]'} rounded-2xl text-white placeholder-[#7b7979] focus:border-[#fbc63d] focus:outline-none transition-all duration-300 appearance-none hover:border-[#a7a6a5] focus:animate-scale-in`}
+                    aria-required="true"
+                    aria-invalid={!!formErrors.domain}
+                    aria-describedby={formErrors.domain ? "domain-error" : undefined}
+                    className={`w-full p-4 bg-[#0c0c0a] border ${formErrors.domain ? 'border-red-500' : 'border-[#7b7979]'} rounded-2xl text-white placeholder-[#7b7979] focus:border-[#fbc63d] focus:outline-none focus:ring-2 focus:ring-[#fbc63d] focus:ring-opacity-50 transition-all duration-300 appearance-none hover:border-[#a7a6a5] focus:animate-scale-in`}
                   >
                     <option value="" className="bg-[#0c0c0a]">Sélectionnez le domaine</option>
                     <option value="Site Web" className="bg-[#0c0c0a]">Site Web</option>
@@ -231,11 +242,11 @@ export default function DevisPage() {
                     <option value="Autre" className="bg-[#0c0c0a]">Autre</option>
                   </select>
                   {formErrors.domain && (
-                    <p className="text-red-500 text-xs mt-1 ml-1">
+                    <p id="domain-error" className="text-red-500 text-xs mt-1 ml-1" aria-live="polite">
                       {formErrors.domain}
                     </p>
                   )}
-                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4">
+                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4" aria-hidden="true">
                     <svg className="fill-current h-4 w-4 text-[#7b7979]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                       <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
                     </svg>
@@ -245,16 +256,21 @@ export default function DevisPage() {
               
               <div className="animate-fade-in" style={{ animationDelay: '300ms' }}>
                 <div className="relative">
+                  <label htmlFor="email" className="sr-only">Votre email</label>
                   <input
+                    id="email"
                     type="email"
                     name="email"
                     placeholder="Votre email"
                     value={formData.email}
                     onChange={handleChange}
-                    className={`w-full p-4 bg-[#0c0c0a] border ${formErrors.email ? 'border-red-500' : 'border-[#7b7979]'} rounded-2xl text-white placeholder-[#7b7979] focus:border-[#fbc63d] focus:outline-none transition-all duration-300 hover:border-[#a7a6a5] focus:animate-scale-in`}
+                    aria-required="true"
+                    aria-invalid={!!formErrors.email}
+                    aria-describedby={formErrors.email ? "email-error" : undefined}
+                    className={`w-full p-4 bg-[#0c0c0a] border ${formErrors.email ? 'border-red-500' : 'border-[#7b7979]'} rounded-2xl text-white placeholder-[#7b7979] focus:border-[#fbc63d] focus:outline-none focus:ring-2 focus:ring-[#fbc63d] focus:ring-opacity-50 transition-all duration-300 hover:border-[#a7a6a5] focus:animate-scale-in`}
                   />
                   {formErrors.email && (
-                    <p className="text-red-500 text-xs mt-1 ml-1">
+                    <p id="email-error" className="text-red-500 text-xs mt-1 ml-1" aria-live="polite">
                       {formErrors.email}
                     </p>
                   )}
@@ -263,16 +279,21 @@ export default function DevisPage() {
               
               <div className="animate-fade-in" style={{ animationDelay: '400ms' }}>
                 <div className="relative">
+                  <label htmlFor="description" className="sr-only">Description détaillée du projet</label>
                   <textarea
+                    id="description"
                     placeholder="Description détaillée du projet"
                     name="description"
                     rows={6}
                     value={formData.description}
                     onChange={handleChange}
-                    className={`w-full p-4 bg-[#0c0c0a] border ${formErrors.description ? 'border-red-500' : 'border-[#7b7979]'} rounded-2xl text-white placeholder-[#7b7979] focus:border-[#fbc63d] focus:outline-none resize-none transition-all duration-300 hover:border-[#a7a6a5] focus:animate-scale-in`}
+                    aria-required="true"
+                    aria-invalid={!!formErrors.description}
+                    aria-describedby={formErrors.description ? "description-error" : undefined}
+                    className={`w-full p-4 bg-[#0c0c0a] border ${formErrors.description ? 'border-red-500' : 'border-[#7b7979]'} rounded-2xl text-white placeholder-[#7b7979] focus:border-[#fbc63d] focus:outline-none focus:ring-2 focus:ring-[#fbc63d] focus:ring-opacity-50 resize-none transition-all duration-300 hover:border-[#a7a6a5] focus:animate-scale-in`}
                   ></textarea>
                   {formErrors.description && (
-                    <p className="text-red-500 text-xs mt-1 ml-1">
+                    <p id="description-error" className="text-red-500 text-xs mt-1 ml-1" aria-live="polite">
                       {formErrors.description}
                     </p>
                   )}
@@ -281,16 +302,21 @@ export default function DevisPage() {
               
               <div className="animate-fade-in" style={{ animationDelay: '500ms' }}>
                 <div className="relative">
+                  <label htmlFor="budget" className="sr-only">Budget estimé</label>
                   <input
+                    id="budget"
                     type="text"
                     name="budget"
                     placeholder="Budget estimé (ex: 5000€)"
                     value={formData.budget}
                     onChange={handleChange}
-                    className={`w-full p-4 bg-[#0c0c0a] border ${formErrors.budget ? 'border-red-500' : 'border-[#7b7979]'} rounded-2xl text-white placeholder-[#7b7979] focus:border-[#fbc63d] focus:outline-none transition-all duration-300 hover:border-[#a7a6a5] focus:animate-scale-in`}
+                    aria-required="true"
+                    aria-invalid={!!formErrors.budget}
+                    aria-describedby={formErrors.budget ? "budget-error" : undefined}
+                    className={`w-full p-4 bg-[#0c0c0a] border ${formErrors.budget ? 'border-red-500' : 'border-[#7b7979]'} rounded-2xl text-white placeholder-[#7b7979] focus:border-[#fbc63d] focus:outline-none focus:ring-2 focus:ring-[#fbc63d] focus:ring-opacity-50 transition-all duration-300 hover:border-[#a7a6a5] focus:animate-scale-in`}
                   />
                   {formErrors.budget && (
-                    <p className="text-red-500 text-xs mt-1 ml-1">
+                    <p id="budget-error" className="text-red-500 text-xs mt-1 ml-1" aria-live="polite">
                       {formErrors.budget}
                     </p>
                   )}
@@ -299,13 +325,14 @@ export default function DevisPage() {
               
               <Button 
                 type="submit"
-                className="w-full bg-[#fbc63d] text-[#070602] hover:bg-[#ffbb00] py-4 rounded-2xl font-medium relative overflow-hidden transition-all duration-300 transform hover:scale-[1.02] hover:animate-elevate group"
+                className="w-full bg-[#fbc63d] text-[#070602] hover:bg-[#ffbb00] py-4 rounded-2xl font-medium relative overflow-hidden transition-all duration-300 transform hover:scale-[1.02] hover:animate-elevate group focus:outline-none focus:ring-2 focus:ring-[#fbc63d] focus:ring-opacity-50"
                 disabled={formSubmitting}
+                aria-busy={formSubmitting}
               >
-                <span className="absolute inset-0 w-0 bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-shimmer" style={{ backgroundSize: '80rem 100%' }}></span>
+                <span className="absolute inset-0 w-0 bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-shimmer" aria-hidden="true" style={{ backgroundSize: '80rem 100%' }}></span>
                 {formSubmitting ? (
                   <div className="flex items-center justify-center">
-                    <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-[#070602] mr-2"></div>
+                    <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-[#070602] mr-2" aria-hidden="true"></div>
                     Envoi en cours...
                   </div>
                 ) : "Demander un devis"}

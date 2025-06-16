@@ -30,19 +30,29 @@ export default function SocialButton({
   };
   
   return (
-    <a href={url} target="_blank" rel="noopener noreferrer" title={`Visitez notre ${name}`}>
+    <a 
+      href={url} 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      title={`Visitez notre ${name}`}
+      aria-label={`Visitez notre page ${name}`}
+      className="focus:outline-none focus:ring-2 focus:ring-[#fbc63d] focus:ring-opacity-50 rounded-full"
+    >
       <Button 
         variant="outline" 
         size="icon" 
         className={`${sizes[size].button} rounded-full transition-all duration-300 ${variants[variant]}`}
+        aria-hidden="true"
+        tabIndex={-1}
       >
         <div className="relative w-full h-full flex items-center justify-center">
           <Image
             src={icon}
-            alt={name}
+            alt=""
             width={sizes[size].icon}
             height={sizes[size].icon}
             className="object-contain"
+            aria-hidden="true"
           />
         </div>
       </Button>
