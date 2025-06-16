@@ -24,7 +24,7 @@ export default function HeroSection({
   ctaText,
   ctaLink,
   imagePosition = "right",
-  backgroundImage = "/hero.png",
+  backgroundImage = "/hero.webp",
   showPattern = true,
 }: HeroSectionProps) {
   // Utiliser le hook pour détecter si l'affichage est mobile
@@ -133,7 +133,7 @@ export default function HeroSection({
                 <div className="overflow-hidden rounded-xl aspect-[4/3] relative flex items-center justify-center">
                   {/* Logo image */}
                   <Image
-                    src="/logo.png"
+                    src="/logo.webp"
                     alt="I-Tsika Logo"
                     width={300}
                     height={300}

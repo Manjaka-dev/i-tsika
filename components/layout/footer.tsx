@@ -15,7 +15,7 @@ export default function Footer() {
           <div>
             <Link href="/" className="flex items-center mb-6">
               <Image
-                src="/logo.png"
+                src="/logo.webp"
                 alt="Logo"
                 width={120}
                 height={120}

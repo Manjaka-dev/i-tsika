@@ -31,7 +31,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <Link href="/" className="flex items-center" aria-label="Accueil I-Tsika">
           <Image
-            src="/logo.png"
+            src="/logo.webp"
             alt="Logo I-Tsika"
             width={100}
             height={100}

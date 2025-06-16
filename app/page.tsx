@@ -12,6 +12,7 @@ import ServicesList from "@/components/sections/services-list";
 import ProjectsGrid from "@/components/sections/projects-grid";
 import ContactForm from "@/components/sections/contact-form";
 import SocialButton from "@/components/ui/social-button";
+import OptimizedImage from "@/components/ui/optimized-image";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 export default function HomePage() {

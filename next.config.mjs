@@ -7,7 +7,11 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    unoptimized: true,
+    unoptimized: false, // Activer les optimisations d'images de Next.js
+    formats: ['image/webp'], // Priorité au format WebP
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048], // Tailles d'appareils pour responsive images
+    imageSizes: [16, 32, 48, 64, 96, 128, 256], // Tailles d'images pour responsive images
+    minimumCacheTTL: 60 * 60 * 24 * 30, // 30 jours de cache
     remotePatterns: [
       {
         protocol: 'https',

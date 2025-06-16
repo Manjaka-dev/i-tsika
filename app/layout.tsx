@@ -4,6 +4,7 @@ import Header from '@/components/layout/header'
 import Footer from '@/components/layout/footer'
 import AppInitializer from '@/components/app-initializer'
 import SkipLink from '@/components/layout/skip-link'
+import ResourcePreloader from '@/components/resource-preloader'
 
 // Import de l'initialisation serveur (s'exécute au démarrage)
 import '@/lib/server-init'
@@ -27,6 +28,7 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body className="bg-[#070602] text-[#ffffff] min-h-screen flex flex-col">
+        <ResourcePreloader />
         <SkipLink />
         <AppInitializer />
         <Header />
