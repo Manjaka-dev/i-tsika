@@ -9,6 +9,9 @@ Ce portfolio présente mes compétences, projets et services proposés. Il inclu
 - Formulaire de contact
 - Formulaire de demande de devis
 - Pages de présentation de projets
+- Système d'authentification utilisateur
+- Espace personnel (dashboard)
+- Panneau d'administration
 
 ## Technologies utilisées
 
@@ -17,6 +20,9 @@ Ce portfolio présente mes compétences, projets et services proposés. Il inclu
 - [Tailwind CSS](https://tailwindcss.com/) - Framework CSS utilitaire
 - [TypeScript](https://www.typescriptlang.org/) - Langage de programmation typé basé sur JavaScript
 - [Nodemailer](https://nodemailer.com/) - Module pour l'envoi d'emails depuis Node.js
+- [NextAuth.js](https://next-auth.js.org/) - Solution d'authentification pour Next.js
+- [Prisma](https://www.prisma.io/) - ORM pour l'accès à la base de données
+- [PostgreSQL](https://www.postgresql.org/) - Système de gestion de base de données relationnelle
 
 ## Fonctionnalités
 
@@ -25,6 +31,10 @@ Ce portfolio présente mes compétences, projets et services proposés. Il inclu
 - Envoi d'emails pour les formulaires de contact et de devis
 - Animations et transitions fluides
 - Optimisation SEO
+- Système d'authentification complet (inscription, connexion, gestion de session)
+- Espace utilisateur personnalisé (dashboard)
+- Panneau d'administration avec gestion des utilisateurs
+- Protection des routes par rôle (utilisateur, administrateur)
 
 ## Installation et configuration
 
@@ -63,6 +73,13 @@ EMAIL_PASS=votre_mot_de_passe_app
 
 # Adresse de destination des emails
 RECIPIENT_EMAIL=destinataire@example.com
+
+# Configuration NextAuth.js
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=votre_secret_nextauth_très_sécurisé
+
+# URL de connexion à la base de données PostgreSQL
+DATABASE_URL="postgresql://username:password@localhost:5432/mydatabase"
 ```
 
 ### Développement local

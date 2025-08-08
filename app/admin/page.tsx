@@ -1,5 +1,68 @@
 'use client';
+import { redirect } from 'next/navigation';
+import { getServerSession } from 'next-auth/next';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
+export default async function AdminPage() {
+  const session = await getServerSession();
+
+  if (!session?.user) {
+    redirect('/login');
+  }
+
+  if (session.user.role !== 'admin') {
+    redirect('/dashboard');
+  }
+
+  return (
+    <div className="container py-10">
+      <h1 className="text-3xl font-bold mb-6">Administration</h1>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <Card>
+          <CardHeader>
+            <CardTitle>Gestion des utilisateurs</CardTitle>
+            <CardDescription>Administrer les comptes utilisateurs</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p className="mb-4">Gérez les utilisateurs, leurs rôles et leurs permissions.</p>
+            <Button asChild>
+              <Link href="/admin/users">Gérer les utilisateurs</Link>
+            </Button>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Demandes de devis</CardTitle>
+            <CardDescription>Gérer les demandes entrantes</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p className="mb-4">Consultez et traitez les demandes de devis reçues.</p>
+            <Button asChild variant="outline">
+              <Link href="/admin/quotes">Voir les demandes</Link>
+            </Button>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Projets</CardTitle>
+            <CardDescription>Suivi des projets en cours</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p className="mb-4">Gérez l'avancement des projets et leur statut.</p>
+            <Button asChild variant="outline">
+              <Link href="/admin/projects">Gérer les projets</Link>
+            </Button>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  );
+}
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
