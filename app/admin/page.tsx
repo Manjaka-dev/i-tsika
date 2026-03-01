@@ -1,26 +1,47 @@
 'use client';
-import { redirect } from 'next/navigation';
-import { getServerSession } from 'next-auth/next';
+
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import Link from 'next/link';
 
-export default async function AdminPage() {
-  const session = await getServerSession();
+export default function AdminPage() {
+  const [emailConfigStatus, setEmailConfigStatus] = useState<{
+    isConfigured?: boolean;
+    missingVars?: string[];
+    configSummary?: {
+      host: string;
+      port: string;
+      user: string;
+      recipientConfigured: boolean;
+      senderConfigured: boolean;
+    }
+  }>({});
 
-  if (!session?.user) {
-    redirect('/login');
-  }
+  const [loading, setLoading] = useState(true);
 
-  if (session.user.role !== 'admin') {
-    redirect('/dashboard');
-  }
+  useEffect(() => {
+    async function checkEmailConfig() {
+      try {
+        const response = await fetch('/api/email-test/check-config');
+        const data = await response.json();
+        setEmailConfigStatus(data);
+      } catch (error) {
+        console.error('Erreur lors de la vérification de la configuration email:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    checkEmailConfig();
+  }, []);
 
   return (
-    <div className="container py-10">
+    <div className="container mx-auto px-4 py-8 max-w-5xl">
       <h1 className="text-3xl font-bold mb-6">Administration</h1>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* Section des cartes de gestion */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
         <Card>
           <CardHeader>
             <CardTitle>Gestion des utilisateurs</CardTitle>
@@ -60,47 +81,7 @@ export default async function AdminPage() {
           </CardContent>
         </Card>
       </div>
-    </div>
-  );
-}
-import Link from 'next/link';
-import { useState, useEffect } from 'react';
 
-export default function AdminPage() {
-  const [emailConfigStatus, setEmailConfigStatus] = useState<{
-    isConfigured?: boolean;
-    missingVars?: string[];
-    configSummary?: {
-      host: string;
-      port: string;
-      user: string;
-      recipientConfigured: boolean;
-      senderConfigured: boolean;
-    }
-  }>({});
-  
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    async function checkEmailConfig() {
-      try {
-        const response = await fetch('/api/email-test/check-config');
-        const data = await response.json();
-        setEmailConfigStatus(data);
-      } catch (error) {
-        console.error('Erreur lors de la vérification de la configuration email:', error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    
-    checkEmailConfig();
-  }, []);
-  
-  return (
-    <div className="container mx-auto px-4 py-8 max-w-5xl">
-      <h1 className="text-3xl font-bold mb-6">Administration</h1>
-      
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Section Email */}
         <div className="bg-white p-6 rounded-lg shadow-md">
