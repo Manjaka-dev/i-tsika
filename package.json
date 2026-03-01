@@ -10,6 +10,7 @@
     "check:email": "node scripts/check-email-config.mjs",
     "optimize-images": "node scripts/optimize-images.js",
     "analyze-css": "node scripts/analyze-css.js",
+    "verify:deployment": "node scripts/verify-deployment.js",
     "postinstall": "prisma generate"
   },
   "dependencies": {
@@ -42,9 +43,10 @@
     "@radix-ui/react-toggle": "^1.1.1",
     "@radix-ui/react-toggle-group": "^1.1.1",
     "@radix-ui/react-tooltip": "^1.1.6",
+    "@types/bcryptjs": "^2.4.6",
     "@types/nodemailer": "^6.4.17",
     "autoprefixer": "^10.4.20",
-    "bcrypt": "^5.1.1",
+    "bcryptjs": "^3.0.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.4",
@@ -73,7 +75,6 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
-    "@types/bcrypt": "^5.0.2",
     "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",
