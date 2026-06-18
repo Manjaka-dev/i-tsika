@@ -16,7 +16,7 @@ export default function Footer() {
             <Link href="/" className="flex items-center mb-6">
               <Image
                 src="/logo.webp"
-                alt="Logo"
+                alt="Logo I-Tsika"
                 width={120}
                 height={120}
                 className="mr-2"
@@ -24,32 +24,26 @@ export default function Footer() {
               />
             </Link>
             <p className="text-[#d9d9d9] text-sm leading-relaxed mb-6">
-              Nous créons des sites web modernes, performants et sur mesure pour répondre aux besoins uniques de votre entreprise.
+              Nous développons des applications sur mesure — web, desktop et mobiles — pour répondre aux besoins uniques de votre entreprise.
             </p>
             <div className="flex space-x-4">
               <a 
-                href="https://github.com/" 
+                href="https://github.com/I-Tsika" 
                 target="_blank" 
                 rel="noopener noreferrer"
+                aria-label="Visitez notre page GitHub"
                 className="w-8 h-8 rounded-full border border-[#7b7979] flex items-center justify-center hover:border-[#fbc63d] hover:bg-[#fbc63d]/10 transition-colors"
               >
-                <Image src="/icons/github.svg" alt="GitHub" width={16} height={16} className="invert brightness-0 filter" />
+                <Image src="/icons/github.svg" alt="" width={16} height={16} className="invert brightness-0 filter" aria-hidden="true" />
               </a>
               <a 
-                href="https://linkedin.com/" 
+                href="https://www.linkedin.com/company/i-tsika" 
                 target="_blank" 
                 rel="noopener noreferrer"
+                aria-label="Visitez notre page LinkedIn"
                 className="w-8 h-8 rounded-full border border-[#7b7979] flex items-center justify-center hover:border-[#fbc63d] hover:bg-[#fbc63d]/10 transition-colors"
               >
-                <Image src="/icons/linkedin.svg" alt="LinkedIn" width={16} height={16} className="invert brightness-0 filter" />
-              </a>
-              <a 
-                href="https://twitter.com/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-8 h-8 rounded-full border border-[#7b7979] flex items-center justify-center hover:border-[#fbc63d] hover:bg-[#fbc63d]/10 transition-colors"
-              >
-                <Image src="/icons/twitter.svg" alt="Twitter" width={16} height={16} className="invert brightness-0 filter" />
+                <Image src="/icons/linkedin.svg" alt="" width={16} height={16} className="invert brightness-0 filter" aria-hidden="true" />
               </a>
             </div>
           </div>
@@ -76,8 +70,12 @@ export default function Footer() {
                   Services
                 </Link>
               </li>
-
-
+              <li>
+                <Link href="/portfolio" className="text-[#d9d9d9] hover:text-[#fbc63d] transition-colors flex items-center">
+                  <ArrowRight className="w-4 h-4 mr-2 text-[#fbc63d]" />
+                  Portfolio
+                </Link>
+              </li>
               <li>
                 <Link href="/faq" className="text-[#d9d9d9] hover:text-[#fbc63d] transition-colors flex items-center">
                   <ArrowRight className="w-4 h-4 mr-2 text-[#fbc63d]" />
@@ -98,33 +96,39 @@ export default function Footer() {
             <h3 className="text-white font-semibold text-lg mb-6">Nos services</h3>
             <ul className="space-y-4">
               <li>
+                <Link href="/services#web-apps" className="text-[#d9d9d9] hover:text-[#fbc63d] transition-colors flex items-center">
+                  <ArrowRight className="w-4 h-4 mr-2 text-[#fbc63d]" />
+                  Applications web
+                </Link>
+              </li>
+              <li>
+                <Link href="/services#desktop" className="text-[#d9d9d9] hover:text-[#fbc63d] transition-colors flex items-center">
+                  <ArrowRight className="w-4 h-4 mr-2 text-[#fbc63d]" />
+                  Logiciels desktop
+                </Link>
+              </li>
+              <li>
+                <Link href="/services#mobile" className="text-[#d9d9d9] hover:text-[#fbc63d] transition-colors flex items-center">
+                  <ArrowRight className="w-4 h-4 mr-2 text-[#fbc63d]" />
+                  Applications mobiles
+                </Link>
+              </li>
+              <li>
                 <Link href="/services#site-vitrine" className="text-[#d9d9d9] hover:text-[#fbc63d] transition-colors flex items-center">
                   <ArrowRight className="w-4 h-4 mr-2 text-[#fbc63d]" />
-                  Site vitrine
+                  Sites vitrines
                 </Link>
               </li>
               <li>
                 <Link href="/services#e-commerce" className="text-[#d9d9d9] hover:text-[#fbc63d] transition-colors flex items-center">
                   <ArrowRight className="w-4 h-4 mr-2 text-[#fbc63d]" />
-                  Site e-commerce
-                </Link>
-              </li>
-              <li>
-                <Link href="/services#refonte" className="text-[#d9d9d9] hover:text-[#fbc63d] transition-colors flex items-center">
-                  <ArrowRight className="w-4 h-4 mr-2 text-[#fbc63d]" />
-                  Refonte de site
+                  E-commerce
                 </Link>
               </li>
               <li>
                 <Link href="/services#maintenance" className="text-[#d9d9d9] hover:text-[#fbc63d] transition-colors flex items-center">
                   <ArrowRight className="w-4 h-4 mr-2 text-[#fbc63d]" />
-                  Maintenance
-                </Link>
-              </li>
-              <li>
-                <Link href="/services#seo" className="text-[#d9d9d9] hover:text-[#fbc63d] transition-colors flex items-center">
-                  <ArrowRight className="w-4 h-4 mr-2 text-[#fbc63d]" />
-                  Optimisation SEO
+                  Maintenance & support
                 </Link>
               </li>
             </ul>
@@ -135,15 +139,19 @@ export default function Footer() {
             <h3 className="text-white font-semibold text-lg mb-6">Contact</h3>
             <ul className="space-y-4">
               <li className="flex items-center">
-                <Mail className="w-5 h-5 text-[#fbc63d] mr-3" />
-                <span className="text-[#d9d9d9]">contact@i-tsika.site</span>
+                <Mail className="w-5 h-5 text-[#fbc63d] mr-3 flex-shrink-0" />
+                <a href="mailto:contact@i-tsika.site" className="text-[#d9d9d9] hover:text-[#fbc63d] transition-colors">
+                  contact@i-tsika.site
+                </a>
               </li>
               <li className="flex items-center">
-                <Phone className="w-5 h-5 text-[#fbc63d] mr-3" />
-                <span className="text-[#d9d9d9]">+261 38 79 399 05</span>
+                <Phone className="w-5 h-5 text-[#fbc63d] mr-3 flex-shrink-0" />
+                <a href="tel:+261387939905" className="text-[#d9d9d9] hover:text-[#fbc63d] transition-colors">
+                  +261 38 79 399 05
+                </a>
               </li>
               <li className="flex items-start">
-                <MapPin className="w-5 h-5 text-[#fbc63d] mr-3 mt-1" />
+                <MapPin className="w-5 h-5 text-[#fbc63d] mr-3 mt-1 flex-shrink-0" />
                 <span className="text-[#d9d9d9]">Antananarivo, Madagascar</span>
               </li>
             </ul>

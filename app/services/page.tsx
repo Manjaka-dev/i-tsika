@@ -2,125 +2,141 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Check } from "lucide-react";
+import { Check, Globe, Monitor, Smartphone, Layout, ShoppingCart, Wrench } from "lucide-react";
 
-// Données des services
+// Nouveaux services
 const services = [
   {
-    id: "site-vitrine",
-    title: "Création de site vitrine",
-    description: "Des sites élégants et personnalisés pour présenter votre entreprise et vos services à vos clients potentiels.",
-    icon: "/icons/website.svg",
-    longDescription: "Nous créons des sites vitrines sur mesure qui reflètent parfaitement l'identité et les valeurs de votre entreprise. Chaque site est conçu avec une attention particulière à l'expérience utilisateur, au design et à la performance pour garantir une présence en ligne professionnelle qui convertit les visiteurs en clients.",
+    id: "web-apps",
+    title: "Applications web sur mesure",
+    description: "Développement de SaaS, portails clients, dashboards, systèmes de gestion interne — des applications web robustes et scalables adaptées à vos processus métier.",
+    icon: <Globe className="w-10 h-10 text-[#fbc63d]" />,
+    longDescription: "Nous concevons et développons des applications web complètes qui répondent précisément à vos besoins métier. Qu'il s'agisse d'un SaaS, d'un portail client, d'un tableau de bord analytique ou d'un système de gestion interne, chaque application est pensée pour être intuitive, performante et évolutive.",
     features: [
-      "Design responsive adapté à tous les appareils",
-      "Optimisation pour les moteurs de recherche (SEO)",
-      "Intégration avec les réseaux sociaux",
-      "Formulaires de contact personnalisés",
-      "Analytics pour suivre les performances",
-      "Hébergement et maintenance"
+      "Architecture scalable et performante",
+      "Interface utilisateur intuitive et responsive",
+      "API RESTful et intégrations tierces",
+      "Authentification et gestion des rôles",
+      "Tableau de bord et analytics embarqués",
+      "Déploiement et hébergement cloud"
     ],
     process: [
-      "Analyse des besoins et benchmarking",
+      "Analyse approfondie de vos processus métier",
+      "Conception UX/UI et prototypage interactif",
+      "Développement agile avec sprints itératifs",
+      "Tests fonctionnels et de performance",
+      "Déploiement progressif et formation"
+    ]
+  },
+  {
+    id: "desktop",
+    title: "Logiciels desktop personnalisés",
+    description: "Des applications desktop (Windows, Linux, macOS) sur mesure pour automatiser, gérer et optimiser vos opérations internes, sans dépendance à internet.",
+    icon: <Monitor className="w-10 h-10 text-[#fbc63d]" />,
+    longDescription: "Nous développons des logiciels desktop natifs ou cross-platform qui fonctionnent de manière autonome sur votre poste de travail. Idéal pour les outils métier nécessitant un accès hors ligne, une performance élevée ou une intégration avec du matériel spécifique.",
+    features: [
+      "Compatible Windows, Linux et macOS",
+      "Fonctionnement hors ligne garanti",
+      "Interface native fluide et réactive",
+      "Base de données locale ou synchronisée",
+      "Mises à jour automatiques",
+      "Intégration avec vos outils existants"
+    ],
+    process: [
+      "Définition des besoins et contraintes techniques",
+      "Choix de l'architecture (Electron, Tauri, natif)",
+      "Développement et tests multi-plateformes",
+      "Installation et configuration sur vos postes",
+      "Formation et documentation utilisateur"
+    ]
+  },
+  {
+    id: "mobile",
+    title: "Applications mobiles",
+    description: "Conception et développement d'apps iOS et Android natives ou cross-platform (React Native / Flutter) centrées sur l'expérience utilisateur.",
+    icon: <Smartphone className="w-10 h-10 text-[#fbc63d]" />,
+    longDescription: "Nous créons des applications mobiles qui offrent une expérience utilisateur exceptionnelle sur iOS et Android. Notre approche cross-platform permet de réduire les coûts tout en garantissant une qualité native sur chaque plateforme.",
+    features: [
+      "Applications iOS et Android",
+      "Cross-platform (React Native / Flutter)",
+      "UX mobile-first optimisée",
+      "Notifications push et temps réel",
+      "Mode hors ligne et synchronisation",
+      "Publication sur App Store et Google Play"
+    ],
+    process: [
+      "Étude de marché et analyse des besoins",
+      "Design UX/UI mobile-first",
+      "Développement cross-platform",
+      "Tests sur appareils réels",
+      "Publication et suivi post-lancement"
+    ]
+  },
+  {
+    id: "site-vitrine",
+    title: "Sites vitrines & landing pages",
+    description: "Des sites modernes, rapides et bien référencés pour asseoir votre crédibilité en ligne et convertir vos visiteurs en clients.",
+    icon: <Layout className="w-10 h-10 text-[#fbc63d]" />,
+    longDescription: "Votre site web est souvent le premier contact avec vos clients potentiels. Nous créons des sites vitrines élégants et des landing pages optimisées pour la conversion, avec un design moderne qui reflète l'identité de votre marque.",
+    features: [
+      "Design responsive et moderne",
+      "Optimisation SEO avancée",
+      "Temps de chargement ultra-rapide",
+      "Formulaires de contact et intégrations",
+      "Interface d'administration simple",
+      "Analytics et suivi des performances"
+    ],
+    process: [
+      "Analyse de vos besoins et benchmarking",
       "Conception de maquettes et prototypes",
-      "Développement du site",
-      "Tests et optimisations",
+      "Développement avec les dernières technologies",
+      "Optimisation SEO et performance",
       "Mise en ligne et formation"
     ]
   },
   {
     id: "e-commerce",
-    title: "Création de site e-commerce",
-    description: "Des boutiques en ligne performantes et sécurisées pour vendre vos produits ou services sur internet.",
-    icon: "/icons/shopping-cart.svg",
-    longDescription: "Nous développons des boutiques en ligne complètes et sécurisées qui permettent à votre entreprise de vendre efficacement en ligne. Nos solutions e-commerce sont conçues pour offrir une expérience d'achat fluide, avec une gestion facile des produits et une optimisation des taux de conversion.",
+    title: "E-commerce",
+    description: "Des boutiques en ligne performantes avec gestion de produits, paiement sécurisé et suivi des commandes.",
+    icon: <ShoppingCart className="w-10 h-10 text-[#fbc63d]" />,
+    longDescription: "Nous développons des plateformes e-commerce complètes et sécurisées, conçues pour maximiser vos ventes en ligne. De la gestion du catalogue à l'intégration des paiements, chaque aspect est optimisé pour offrir une expérience d'achat fluide.",
     features: [
-      "Catalogue produits personnalisable",
-      "Système de paiement sécurisé",
+      "Catalogue produits dynamique",
+      "Paiement sécurisé multi-méthodes",
       "Gestion des stocks et commandes",
-      "Paniers abandonnés et emails automatisés",
-      "Optimisation pour la conversion",
-      "Compatible mobile et tablette"
+      "Système de promotions et codes promo",
+      "Compatible mobile money (Madagascar)",
+      "Tableau de bord vendeur"
     ],
     process: [
-      "Analyse de vos besoins e-commerce",
+      "Analyse de votre marché et besoins e-commerce",
       "Architecture de la boutique et parcours d'achat",
       "Développement de la plateforme",
       "Intégration des méthodes de paiement",
-      "Tests de sécurité et performance",
-      "Formation à la gestion de la boutique"
-    ]
-  },
-  {
-    id: "refonte",
-    title: "Refonte de site existant",
-    description: "Modernisez votre présence en ligne avec une refonte complète de votre site pour améliorer son design et ses performances.",
-    icon: "/icons/refresh.svg",
-    longDescription: "Une refonte de site web va bien au-delà d'un simple changement d'apparence. Nous analysons les forces et faiblesses de votre site actuel pour créer une version améliorée qui répond mieux aux attentes de vos utilisateurs et aux objectifs de votre entreprise.",
-    features: [
-      "Audit complet de votre site existant",
-      "Amélioration de l'expérience utilisateur",
-      "Modernisation du design",
-      "Optimisation des performances",
-      "Mise à niveau technique et sécuritaire",
-      "Migration de contenu"
-    ],
-    process: [
-      "Audit et analyse de l'existant",
-      "Définition des objectifs d'amélioration",
-      "Conception de la nouvelle version",
-      "Développement et migrations",
-      "Tests et optimisations",
-      "Formation et lancement"
+      "Tests de sécurité et lancement"
     ]
   },
   {
     id: "maintenance",
-    title: "Maintenance et support technique",
-    description: "Un accompagnement régulier pour garder votre site à jour, sécurisé et performant dans le temps.",
-    icon: "/icons/settings.svg",
-    longDescription: "La maintenance régulière d'un site web est essentielle pour garantir sa sécurité, ses performances et sa pérennité. Nous proposons différentes formules de maintenance pour vous accompagner dans la durée et assurer le bon fonctionnement de votre site.",
+    title: "Maintenance & support",
+    description: "Suivi technique, mises à jour, corrections de bugs et monitoring de vos applications en production.",
+    icon: <Wrench className="w-10 h-10 text-[#fbc63d]" />,
+    longDescription: "La maintenance régulière est essentielle pour garantir la sécurité, la performance et la pérennité de vos applications. Nous proposons des contrats de maintenance adaptés pour vous accompagner dans la durée.",
     features: [
-      "Mises à jour régulières des logiciels",
+      "Mises à jour régulières et sécurité",
       "Sauvegardes automatiques",
-      "Monitoring de sécurité",
-      "Correctifs de bugs",
+      "Monitoring et alertes 24/7",
+      "Correctifs de bugs prioritaires",
       "Support technique réactif",
       "Rapports de performance mensuels"
     ],
     process: [
-      "Audit initial de votre site",
-      "Mise en place des outils de monitoring",
+      "Audit initial de votre application",
+      "Mise en place du monitoring",
       "Planning de maintenance préventive",
       "Interventions techniques selon besoins",
-      "Rapports réguliers",
-      "Recommandations d'améliorations"
-    ]
-  },
-
-  {
-    id: "hebergement",
-    title: "Hébergement et nom de domaine",
-    description: "Des solutions d'hébergement fiables et sécurisées, ainsi que la gestion de vos noms de domaine.",
-    icon: "/icons/server.svg",
-    longDescription: "Nous proposons des solutions d'hébergement web performantes et sécurisées, adaptées aux besoins spécifiques de votre site. Notre service inclut également la gestion de vos noms de domaine et la configuration des services associés.",
-    features: [
-      "Hébergement haute disponibilité",
-      "Certificats SSL inclus",
-      "Protection contre les attaques DDoS",
-      "Sauvegardes quotidiennes",
-      "Monitoring 24/7",
-      "Gestion DNS professionnelle"
-    ],
-    process: [
-      "Évaluation des besoins techniques",
-      "Configuration du serveur",
-      "Migration ou mise en place",
-      "Tests de performance et sécurité",
-      "Configuration des emails et services annexes",
-      "Support continu"
+      "Rapports et recommandations"
     ]
   },
 ];
@@ -154,9 +170,38 @@ export default function ServicesPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              Des solutions web sur mesure pour répondre à tous vos besoins numériques,
-              de la création de site vitrine à l'optimisation SEO.
+              Des solutions numériques sur mesure pour tous vos besoins :
+              applications web, desktop, mobiles, sites vitrines et e-commerce.
             </motion.p>
+          </div>
+        </div>
+      </section>
+
+      {/* Services overview grid */}
+      <section className="py-16 bg-[#070602]">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {services.map((service, index) => (
+              <motion.a
+                key={service.id}
+                href={`#${service.id}`}
+                className="bg-[#201f1b]/40 p-8 rounded-2xl border border-[#fbc63d]/5 hover:border-[#fbc63d]/20 transition-all duration-300 hover:bg-[#201f1b] hover:-translate-y-1 hover:shadow-lg hover:shadow-[#fbc63d]/5 group"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
+              >
+                <div className="bg-[#fbc63d]/10 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[#fbc63d]/20 group-hover:scale-110 transition-all duration-300">
+                  {service.icon}
+                </div>
+                <h3 className="text-xl font-bold mb-3 text-white group-hover:text-[#fbc63d] transition-colors">
+                  {service.title}
+                </h3>
+                <p className="text-[#d9d9d9] text-sm leading-relaxed">
+                  {service.description}
+                </p>
+              </motion.a>
+            ))}
           </div>
         </div>
       </section>
@@ -185,13 +230,7 @@ export default function ServicesPage() {
                       <div className="absolute inset-0 bg-gradient-to-br from-[#fbc63d]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                       <div className="relative z-10">
                         <div className="bg-[#fbc63d]/10 w-20 h-20 rounded-2xl flex items-center justify-center mb-8">
-                          <Image
-                            src={service.icon}
-                            alt={service.title}
-                            width={40}
-                            height={40}
-                            className="group-hover:scale-110 transition-transform duration-300"
-                          />
+                          {service.icon}
                         </div>
                         <h2 className="text-3xl font-bold mb-6 text-white">
                           {service.title}
@@ -200,8 +239,6 @@ export default function ServicesPage() {
                           {service.description}
                         </p>
                       </div>
-
-                      {/* Decorative elements */}
                       <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-[#fbc63d]/10 rounded-full blur-xl opacity-50 group-hover:opacity-80 transition-opacity duration-500"></div>
                     </div>
                   </div>
@@ -226,7 +263,7 @@ export default function ServicesPage() {
                     <ol className="space-y-4 mb-8">
                       {service.process.map((step, i) => (
                         <li key={i} className="flex items-start">
-                          <div className="bg-[#fbc63d] text-[#070602] w-6 h-6 rounded-full flex items-center justify-center mr-3 flex-shrink-0 font-medium">
+                          <div className="bg-[#fbc63d] text-[#070602] w-6 h-6 rounded-full flex items-center justify-center mr-3 flex-shrink-0 font-medium text-sm">
                             {i + 1}
                           </div>
                           <span className="text-[#d9d9d9]">{step}</span>
@@ -242,7 +279,6 @@ export default function ServicesPage() {
                   </div>
                 </motion.div>
 
-                {/* Divider */}
                 {index < services.length - 1 && (
                   <div className="w-full h-px bg-gradient-to-r from-transparent via-[#fbc63d]/20 to-transparent my-16"></div>
                 )}
@@ -271,7 +307,7 @@ export default function ServicesPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            Contactez-nous dès aujourd'hui pour discuter de votre projet et obtenir un devis personnalisé.
+            Contactez-nous dès aujourd&apos;hui pour discuter de votre projet et obtenir un devis personnalisé.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}

@@ -4,7 +4,7 @@ import { checkEmailConfig } from '@/lib/env-check';
 
 /**
  * API centralisée pour l'envoi d'emails
- * Cette API gère les demandes d'envoi d'emails pour le formulaire de contact et le formulaire de devis
+ * Gère les demandes d'envoi d'emails pour le formulaire de contact et le formulaire de devis multi-étapes
  */
 export async function POST(request: NextRequest) {
   // Vérifier d'abord si la configuration email est correcte
@@ -38,19 +38,31 @@ export async function POST(request: NextRequest) {
       result = await sendContactEmail(name, email, message);
     } 
     else if (type === 'quote') {
-      // Formulaire de devis
-      const { projectName, domain, email, description, budget } = data;
+      // Formulaire de devis multi-étapes
+      const { firstName, lastName, email, phone, company, projectType, description, features, budget, deadline, hasSpecification } = data;
       
       // Vérification des champs requis
-      if (!projectName || !domain || !email || !description || !budget) {
+      if (!firstName || !lastName || !email || !projectType || !description || !budget || !deadline) {
         return NextResponse.json({ 
           success: false, 
-          error: 'Tous les champs du formulaire de devis sont obligatoires' 
+          error: 'Veuillez remplir tous les champs obligatoires du formulaire de devis' 
         }, { status: 400 });
       }
       
       // Envoi de l'email de demande de devis
-      result = await sendQuoteEmail(projectName, domain, email, description, budget);
+      result = await sendQuoteEmail({
+        firstName,
+        lastName,
+        email,
+        phone: phone || '',
+        company: company || '',
+        projectType,
+        description,
+        features: features || [],
+        budget,
+        deadline,
+        hasSpecification: hasSpecification || 'Non précisé',
+      });
     }
     else {
       // Type de formulaire non supporté

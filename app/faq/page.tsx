@@ -1,284 +1,348 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown, Search, Globe, Monitor, Smartphone, Wrench, CreditCard, MessageCircle, ArrowRight } from "lucide-react";
 
-// Données des FAQ organisées par catégories
-const faqCategories = [
-	{
-		id: "general",
-		name: "Questions générales",
-		questions: [
-			{
-				id: "q1",
-				question: "Combien de temps faut-il pour créer un site web ?",
-				answer: "Le délai de création d'un site web dépend de sa complexité. Pour un site vitrine standard, comptez environ 8 à 12 semaines du briefing à la mise en ligne. Un site e-commerce ou une application web plus complexe peut nécessiter de 16 à 24 semaines. Nous établissons toujours un calendrier précis au début du projet pour vous donner une visibilité complète sur les étapes et les délais.",
-			},
-			{
-				id: "q2",
-				question: "Comment se déroule le processus de création ?",
-				answer: "Notre processus de création se déroule en plusieurs étapes : 1) Analyse de vos besoins et objectifs, 2) Proposition de maquettes et wireframes, 3) Développement du site, 4) Tests et ajustements, 5) Formation à l'utilisation, et 6) Mise en ligne. Tout au long du processus, nous maintenons une communication régulière pour vous tenir informé de l'avancement et recueillir vos retours.",
-			},
-			{
-				id: "q3",
-				question: "Est-ce que vous proposez aussi l'hébergement du site ?",
-				answer: "Nous tenons à vous signaler qu'actuellement, nous ne disposons pas de solution d'hébergement. Nous pouvons vous diriger vers des sociétés tierces dignes de confiance, avec lesquelles nous entretenons une collaboration solide. Nous nous chargeons intégralement de l’installation ainsi que de la configuration des serveurs.",
-			},
-		],
-	},
-	{
-		id: "technical",
-		name: "Questions techniques",
-		questions: [
-			{
-				id: "q4",
-				question: "Qu'est-ce qu'un site responsive ?",
-				answer: "Un site responsive est un site web dont le design s'adapte automatiquement à tous les appareils (ordinateurs, tablettes, smartphones) pour offrir une expérience utilisateur optimale. Tous nos sites sont créés avec une approche 'mobile-first', garantissant un affichage parfait sur tous les écrans.",
-			},
-			{
-				id: "q5",
-				question: "Quelles technologies utilisez-vous pour développer vos sites ?",
-				answer: "Nous ne disposons pas d'une technologie unique, mais nous adaptons les technologies en fonction des exigences spécifiques du produit demandé par notre client.",
-			},
-			{
-				id: "q6",
-				question: "Comment assurez-vous la sécurité des sites web ?",
-				answer: "La sécurité est une priorité pour nous. Nous mettons en œuvre les meilleures pratiques comme l'utilisation de certificats SSL, la protection contre les injections SQL et les attaques XSS ainsi que des mises à jour régulières des systèmes.",
-			},
-			{
-				id: "q7",
-				question: "Comment optimisez-vous la vitesse de chargement des sites ?",
-				answer: "Nous optimisons la vitesse de chargement par diverses techniques : compression et optimisation des images, minification des fichiers CSS et JavaScript, mise en cache, utilisation de CDN (Content Delivery Network), et lazy loading pour les contenus lourds. Nous veillons à ce que tous nos sites obtiennent d'excellents scores sur les outils de mesure de performance comme Google PageSpeed Insights.",
-			},
-		],
-	},
+// Catégories avec icônes
+const categories = [
+  { id: "all", label: "Tout", icon: null },
+  { id: "general", label: "Général", icon: <MessageCircle className="w-4 h-4" /> },
+  { id: "services", label: "Services", icon: <Globe className="w-4 h-4" /> },
+  { id: "process", label: "Processus", icon: <Wrench className="w-4 h-4" /> },
+  { id: "pricing", label: "Tarifs", icon: <CreditCard className="w-4 h-4" /> },
+];
 
-	{
-		id: "maintenance",
-		name: "Maintenance et support",
-		questions: [
-			{
-				id: "q8",
-				question: "Proposez-vous un service de maintenance ?",
-				answer: "Oui, nous proposons différentes formules de maintenance pour garder votre site à jour, sécurisé et performant. Ces formules incluent les mises à jour techniques, les sauvegardes régulières, la surveillance de la sécurité et un support en cas de problème. Nous proposons des contrats mensuels ou annuels selon vos besoins.",
-			},
-			{
-				id: "q9",
-				question: "Que faire en cas de problème technique sur mon site ?",
-				answer: "Nos clients sous contrat de maintenance bénéficient d'un support prioritaire avec des temps de réponse garantis. Selon la nature du problème, nous intervenons dans les délais prévus dans votre contrat. Pour les urgences, nous disposons d'un système d'astreinte qui permet une intervention rapide même en dehors des heures de bureau.",
-			},
-			{
-				id: "q10",
-				question: "Puis-je faire évoluer mon site après sa mise en ligne ?",
-				answer: "Absolument ! Nous concevons tous nos sites de façon modulaire pour permettre des évolutions futures. Que vous souhaitiez ajouter de nouvelles fonctionnalités, modifier le design ou intégrer de nouveaux contenus, votre site peut évoluer avec votre entreprise. Nous vous accompagnons dans ces évolutions pour garantir leur cohérence avec l'existant.",
-			},
-		],
-	},
-	{
-		id: "pricing",
-		name: "Tarifs et paiement",
-		questions: [
-			{
-				id: "q11",
-				question: "Comment sont calculés vos tarifs ?",
-				answer: "Nos tarifs sont basés sur la complexité du projet, le nombre de fonctionnalités requises et le temps de développement estimé. Chaque projet étant unique, nous proposons toujours un devis personnalisé après avoir échangé sur vos besoins spécifiques. Nous travaillons en toute transparence et détaillons les différents postes de coûts.",
-			},
-			{
-				id: "q12",
-				question: "Quelles sont les modalités de paiement ?",
-				answer: "Nous demandons généralement un acompte de 30% à la signature du devis pour démarrer le projet, puis 40% à mi-parcours, et les 30% restants à la livraison. Pour les projets de maintenance, les paiements sont mensuels ou trimestriels selon la formule choisie. Nous acceptons les virements bancaires et les paiements par carte.",
-			},
-			{
-				id: "q13",
-				question: "Proposez-vous des facilités de paiement ?",
-				answer: "Oui, pour les projets importants, nous pouvons proposer des échéanciers de paiement adaptés à votre situation. N'hésitez pas à nous en parler lors de l'établissement du devis, nous trouverons une solution qui convient à votre budget et à vos contraintes financières.",
-			},
-		],
-	},
+const faqItems = [
+  // Général
+  {
+    id: "q1",
+    category: "general",
+    question: "Quels types de projets développez-vous ?",
+    answer: "Nous développons tout type d'application numérique : applications web métier (SaaS, portails, dashboards), logiciels desktop pour Windows, Linux et macOS, applications mobiles iOS et Android, sites vitrines, landing pages et plateformes e-commerce. Chaque projet est abordé sur mesure, en fonction de vos besoins réels."
+  },
+  {
+    id: "q2",
+    category: "general",
+    question: "Travaillez-vous avec des clients hors de Madagascar ?",
+    answer: "Oui, nous travaillons à distance avec des clients à Madagascar et à l'international. Toute la communication peut se faire en ligne (email, visio, messagerie). Nous nous adaptons aux fuseaux horaires et proposons des points réguliers pour garantir un suivi optimal de votre projet."
+  },
+  {
+    id: "q3",
+    category: "general",
+    question: "Puis-je vous confier un projet déjà commencé par quelqu'un d'autre ?",
+    answer: "Oui, nous pouvons reprendre un projet existant. Nous commençons par un audit technique complet pour évaluer l'état du code, identifier les problèmes et proposer un plan d'action : poursuite du développement, refactoring partiel ou refonte complète selon la situation."
+  },
+
+  // Services
+  {
+    id: "q4",
+    category: "services",
+    question: "Quelle est la différence entre une application web et un logiciel desktop ?",
+    answer: "Une application web fonctionne dans un navigateur et est accessible depuis n'importe quel appareil connecté à internet (ex : un CRM, un SaaS). Un logiciel desktop s'installe directement sur votre ordinateur (Windows, Mac, Linux) et peut fonctionner hors ligne — idéal pour les outils métier nécessitant des performances élevées ou l'accès à du matériel spécifique."
+  },
+  {
+    id: "q5",
+    category: "services",
+    question: "Développez-vous des applications mobiles natives ou cross-platform ?",
+    answer: "Nous proposons les deux approches selon vos besoins et votre budget. Le cross-platform (React Native, Flutter) permet de cibler iOS et Android avec un seul code, réduisant les coûts et les délais. Le natif offre des performances maximales et un accès complet aux fonctionnalités de chaque plateforme. Nous vous conseillons la meilleure option selon votre projet."
+  },
+  {
+    id: "q6",
+    category: "services",
+    question: "Pouvez-vous développer un logiciel métier spécifique à mon activité ?",
+    answer: "C'est notre spécialité. Nous concevons des logiciels sur mesure adaptés à vos processus : gestion de stock, facturation, planification, suivi de production, CRM interne… Nous analysons vos besoins en profondeur pour créer un outil qui s'intègre parfaitement à votre façon de travailler."
+  },
+  {
+    id: "q7",
+    category: "services",
+    question: "Est-ce que je pourrai modifier mon application moi-même ?",
+    answer: "Oui, si vous le souhaitez. Pour les applications web, nous intégrons une interface d'administration intuitive. Pour les logiciels desktop, nous prévoyons des options de configuration adaptées. Pour les applications mobiles, les mises à jour de contenu peuvent être gérées depuis un back-office web. Nous formons également votre équipe à l'utilisation de chaque outil."
+  },
+
+  // Processus
+  {
+    id: "q8",
+    category: "process",
+    question: "Comment se déroule un projet avec I-Tsika ?",
+    answer: "Nous suivons un processus en 5 étapes : (1) Analyse approfondie de vos besoins et rédaction du cahier des charges, (2) Conception des maquettes UI/UX et validation, (3) Développement itératif avec démos régulières, (4) Phase de tests et corrections, (5) Livraison, déploiement et formation de votre équipe. Vous êtes impliqué et informé à chaque étape."
+  },
+  {
+    id: "q9",
+    category: "process",
+    question: "Combien de temps faut-il pour livrer un projet ?",
+    answer: "Les délais varient selon la complexité : un site vitrine prend 4 à 8 semaines, une application web métier 2 à 4 mois, un logiciel desktop 3 à 6 mois, et une application mobile 2 à 5 mois. Nous définissons un calendrier précis avec des jalons clairs dès le début du projet."
+  },
+  {
+    id: "q10",
+    category: "process",
+    question: "Quelles technologies utilisez-vous ?",
+    answer: "Nous sélectionnons soigneusement notre stack technique en fonction des besoins spécifiques de chaque projet. Ce choix sur mesure est guidé par vos objectifs d'affaires, les contraintes techniques (performances, sécurité, scalabilité) ainsi que les fonctionnalités requises. Qu'il s'agisse de solutions web, desktop ou mobiles, nous utilisons les technologies les plus pertinentes pour vous garantir une application robuste et pérenne."
+  },
+
+  // Tarifs
+  {
+    id: "q11",
+    category: "pricing",
+    question: "Quel est votre processus de tarification ?",
+    answer: "Chaque projet est unique, donc chaque devis l'est aussi. Après un premier échange pour comprendre vos besoins, nous établissons un devis détaillé et transparent. Remplissez notre formulaire de devis en ligne pour obtenir une estimation personnalisée sous 48h, sans engagement."
+  },
+  {
+    id: "q12",
+    category: "pricing",
+    question: "Proposez-vous de la maintenance après livraison ?",
+    answer: "Oui. Nous proposons des contrats de maintenance mensuels adaptés à chaque type d'application : mises à jour de sécurité, corrections de bugs, sauvegardes, monitoring des performances et support technique. Pour les logiciels desktop, cela inclut aussi la gestion des mises à jour automatiques."
+  },
+  {
+    id: "q13",
+    category: "pricing",
+    question: "Comment sont structurés les paiements ?",
+    answer: "Nous fonctionnons généralement avec un acompte de 30% au démarrage, 40% à mi-parcours après validation des maquettes, et 30% à la livraison. Pour les projets importants, nous pouvons proposer des échéanciers personnalisés. Nous acceptons les virements bancaires et les paiements mobile money."
+  },
 ];
 
 export default function FAQPage() {
-	// État pour gérer les questions ouvertes
-	const [openQuestions, setOpenQuestions] = useState<{ [key: string]: boolean }>({});
+  const [activeCategory, setActiveCategory] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [openQuestion, setOpenQuestion] = useState<string | null>(null);
 
-	// Toggle pour ouvrir/fermer une question
-	const toggleQuestion = (questionId: string) => {
-		setOpenQuestions((prev) => ({
-			...prev,
-			[questionId]: !prev[questionId],
-		}));
-	};
+  const toggleQuestion = (id: string) => {
+    setOpenQuestion(openQuestion === id ? null : id);
+  };
 
-	return (
-		<main className="bg-[#070602] text-white">
-			{/* Hero section */}
-			<section className="relative py-24 bg-[#0c0c0a]">
-				<div className="max-w-7xl mx-auto px-6">
-					<div className="text-center">
-						<motion.span
-							className="text-[#fbc63d] uppercase tracking-wider text-sm font-medium mb-3 block"
-							initial={{ opacity: 0, y: 10 }}
-							animate={{ opacity: 1, y: 0 }}
-							transition={{ duration: 0.5 }}
-						>
-							Réponses à vos questions
-						</motion.span>
-						<motion.h1
-							className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
-							initial={{ opacity: 0, y: 10 }}
-							animate={{ opacity: 1, y: 0 }}
-							transition={{ duration: 0.5, delay: 0.1 }}
-						>
-							Foire aux questions
-						</motion.h1>
-						<motion.p
-							className="text-[#d9d9d9] text-lg max-w-2xl mx-auto"
-							initial={{ opacity: 0, y: 10 }}
-							animate={{ opacity: 1, y: 0 }}
-							transition={{ duration: 0.5, delay: 0.2 }}
-						>
-							Retrouvez les réponses aux questions les plus fréquemment posées sur nos services et notre façon de travailler.
-						</motion.p>
-					</div>
-				</div>
-			</section>
+  const filteredFaqs = faqItems.filter((item) => {
+    const matchesCategory = activeCategory === "all" || item.category === activeCategory;
+    const matchesSearch = searchQuery === "" || 
+      item.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.answer.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
 
-			{/* Table of contents */}
-			<section className="py-12">
-				<div className="max-w-5xl mx-auto px-6">
-					<motion.div
-						className="bg-[#201f1b]/60 rounded-2xl p-8"
-						initial={{ opacity: 0, y: 20 }}
-						whileInView={{ opacity: 1, y: 0 }}
-						viewport={{ once: true }}
-						transition={{ duration: 0.5 }}
-					>
-						<h2 className="text-2xl font-bold mb-6">Sommaire</h2>
-						<ul className="grid md:grid-cols-2 gap-4">
-							{faqCategories.map((category) => (
-								<li key={category.id}>
-									<a
-										href={`#${category.id}`}
-										className="flex items-center text-[#fbc63d] hover:text-[#ffbb00] transition-colors"
-									>
-										<span className="mr-2">→</span>
-										{category.name}
-									</a>
-								</li>
-							))}
-						</ul>
-					</motion.div>
-				</div>
-			</section>
+  return (
+    <main className="bg-[#070602] text-white">
+      {/* Hero section */}
+      <section className="relative py-24 md:py-32 bg-[#0c0c0a] overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#fbc63d]/5 rounded-full blur-[120px]" />
+        </div>
 
-			{/* FAQ Categories */}
-			<section className="py-12">
-				<div className="max-w-5xl mx-auto px-6">
-					<div className="space-y-16">
-						{faqCategories.map((category, categoryIndex) => (
-							<div key={category.id} id={category.id} className="scroll-mt-24">
-								<motion.h2
-									className="text-3xl font-bold mb-8 flex items-center"
-									initial={{ opacity: 0, x: -20 }}
-									whileInView={{ opacity: 1, x: 0 }}
-									viewport={{ once: true }}
-									transition={{ duration: 0.5 }}
-								>
-									<span className="w-8 h-8 bg-[#fbc63d] text-[#070602] rounded-full flex items-center justify-center mr-4 text-sm font-bold">
-										{categoryIndex + 1}
-									</span>
-									{category.name}
-								</motion.h2>
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="text-center">
+            <motion.span
+              className="text-[#fbc63d] uppercase tracking-wider text-sm font-medium mb-3 block"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              Centre d&apos;aide
+            </motion.span>
+            <motion.h1
+              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              Comment pouvons-nous <br className="hidden md:block" />
+              <span className="text-[#fbc63d]">vous aider</span> ?
+            </motion.h1>
+            <motion.p
+              className="text-[#d9d9d9] text-lg max-w-2xl mx-auto mb-10"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              Trouvez rapidement les réponses à vos questions sur nos services, notre processus et nos tarifs.
+            </motion.p>
 
-								<div className="space-y-4">
-									{category.questions.map((item, index) => (
-										<motion.div
-											key={item.id}
-											className="bg-[#201f1b] rounded-xl overflow-hidden"
-											initial={{ opacity: 0, y: 20 }}
-											whileInView={{ opacity: 1, y: 0 }}
-											viewport={{ once: true }}
-											transition={{ duration: 0.5, delay: index * 0.05 }}
-										>
-											<button
-												id={`faq-question-${item.id}`}
-												className="w-full text-left px-6 py-5 flex justify-between items-center focus:outline-none focus:ring-2 focus:ring-[#fbc63d] focus:ring-opacity-50 rounded-lg"
-												onClick={() => toggleQuestion(item.id)}
-												aria-expanded={openQuestions[item.id] === true}
-												aria-controls={`faq-content-${item.id}`}
-											>
-												<span className="text-lg font-medium">{item.question}</span>
-												<span className="flex-shrink-0 ml-4" aria-hidden="true">
-													{openQuestions[item.id] ? (
-														<ChevronUp className="w-5 h-5 text-[#fbc63d]" />
-													) : (
-														<ChevronDown className="w-5 h-5 text-[#fbc63d]" />
-													)}
-												</span>
-											</button>
-											<div
-												id={`faq-content-${item.id}`}
-												className={`px-6 pb-6 transition-[max-height,opacity] duration-300 ease-in-out overflow-hidden ${
-													openQuestions[item.id] ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-												}`}
-												role="region"
-												aria-labelledby={`faq-question-${item.id}`}
-											>
-												<p className="text-[#d9d9d9]">{item.answer}</p>
-											</div>
-										</motion.div>
-									))}
-								</div>
-							</div>
-						))}
-					</div>
-				</div>
-			</section>
+            {/* Search bar */}
+            <motion.div
+              className="max-w-xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
+              <div className="relative">
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#7b7979]" />
+                <input
+                  type="text"
+                  placeholder="Rechercher une question..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-12 pr-4 py-4 bg-[#201f1b]/80 border border-[#7b7979]/20 rounded-2xl text-white placeholder-[#7b7979] focus:border-[#fbc63d] focus:outline-none focus:ring-2 focus:ring-[#fbc63d]/20 transition-all backdrop-blur-sm"
+                />
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
 
-			{/* Additional question section */}
-			<section className="py-24 bg-[#0c0c0a]">
-				<div className="max-w-5xl mx-auto px-6 text-center">
-					<motion.h2
-						className="text-3xl md:text-4xl font-bold mb-6"
-						initial={{ opacity: 0, y: 20 }}
-						whileInView={{ opacity: 1, y: 0 }}
-						viewport={{ once: true }}
-						transition={{ duration: 0.5 }}
-					>
-						Vous ne trouvez pas la réponse à votre question ?
-					</motion.h2>
-					<motion.p
-						className="text-[#d9d9d9] text-lg mb-10 max-w-2xl mx-auto"
-						initial={{ opacity: 0, y: 20 }}
-						whileInView={{ opacity: 1, y: 0 }}
-						viewport={{ once: true }}
-						transition={{ duration: 0.5, delay: 0.1 }}
-					>
-						N'hésitez pas à nous contacter directement, nous serons ravis de vous aider et de répondre à toutes vos questions.
-					</motion.p>
-					<motion.div
-						className="flex flex-wrap justify-center gap-6"
-						initial={{ opacity: 0, y: 20 }}
-						whileInView={{ opacity: 1, y: 0 }}
-						viewport={{ once: true }}
-						transition={{ duration: 0.5, delay: 0.2 }}
-					>
-						<Link href="/contact">
-							<Button className="bg-[#fbc63d] text-[#070602] hover:bg-[#ffbb00] hover:scale-105 px-8 py-3 rounded-full text-sm font-medium transition-all duration-300">
-								Nous contacter
-							</Button>
-						</Link>
-						<Link href="/devis">
-							<Button className="bg-transparent border border-[#fbc63d] text-white hover:bg-[#fbc63d]/10 hover:scale-105 px-8 py-3 rounded-full text-sm font-medium transition-all duration-300">
-								Demander un devis
-							</Button>
-						</Link>
-					</motion.div>
-				</div>
-			</section>
-		</main>
-	);
+      {/* Category filter + FAQ */}
+      <section className="py-16 md:py-24">
+        <div className="max-w-4xl mx-auto px-6">
+          {/* Category pills */}
+          <motion.div
+            className="flex flex-wrap justify-center gap-3 mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
+            {categories.map((cat) => (
+              <button
+                key={cat.id}
+                onClick={() => setActiveCategory(cat.id)}
+                className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
+                  activeCategory === cat.id
+                    ? "bg-[#fbc63d] text-[#070602] shadow-lg shadow-[#fbc63d]/20"
+                    : "bg-[#201f1b]/60 text-[#d9d9d9] hover:bg-[#201f1b] hover:text-white border border-[#7b7979]/10"
+                }`}
+              >
+                {cat.icon}
+                {cat.label}
+              </button>
+            ))}
+          </motion.div>
+
+          {/* FAQ Items */}
+          <div className="space-y-3">
+            <AnimatePresence mode="popLayout">
+              {filteredFaqs.map((item, index) => (
+                <motion.div
+                  key={item.id}
+                  layout
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.3, delay: index * 0.03 }}
+                >
+                  <div
+                    className={`rounded-2xl overflow-hidden transition-all duration-300 ${
+                      openQuestion === item.id
+                        ? "bg-gradient-to-br from-[#201f1b] to-[#1a1915] border border-[#fbc63d]/20 shadow-lg shadow-[#fbc63d]/5"
+                        : "bg-[#201f1b]/50 border border-transparent hover:border-[#7b7979]/20 hover:bg-[#201f1b]/80"
+                    }`}
+                  >
+                    <button
+                      onClick={() => toggleQuestion(item.id)}
+                      className="w-full text-left px-6 py-5 flex justify-between items-center focus:outline-none focus:ring-2 focus:ring-[#fbc63d]/30 rounded-2xl group"
+                      aria-expanded={openQuestion === item.id}
+                      aria-controls={`faq-answer-${item.id}`}
+                    >
+                      <div className="flex items-center gap-4 pr-4">
+                        <div className={`hidden md:flex w-10 h-10 rounded-xl items-center justify-center flex-shrink-0 transition-colors duration-300 ${
+                          openQuestion === item.id ? "bg-[#fbc63d]/20" : "bg-[#fbc63d]/5 group-hover:bg-[#fbc63d]/10"
+                        }`}>
+                          <span className={`text-sm font-bold transition-colors ${
+                            openQuestion === item.id ? "text-[#fbc63d]" : "text-[#7b7979] group-hover:text-[#fbc63d]"
+                          }`}>
+                            {item.id.replace("q", "")}
+                          </span>
+                        </div>
+                        <span className={`text-base md:text-lg font-medium transition-colors ${
+                          openQuestion === item.id ? "text-[#fbc63d]" : "text-white"
+                        }`}>
+                          {item.question}
+                        </span>
+                      </div>
+                      <motion.div
+                        animate={{ rotate: openQuestion === item.id ? 180 : 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="flex-shrink-0"
+                      >
+                        <ChevronDown className={`w-5 h-5 transition-colors ${
+                          openQuestion === item.id ? "text-[#fbc63d]" : "text-[#7b7979]"
+                        }`} />
+                      </motion.div>
+                    </button>
+
+                    <AnimatePresence>
+                      {openQuestion === item.id && (
+                        <motion.div
+                          id={`faq-answer-${item.id}`}
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                          className="overflow-hidden"
+                        >
+                          <div className="px-6 pb-6 md:pl-[4.5rem]">
+                            <div className="bg-[#1a1915]/80 rounded-2xl p-6 border border-[#fbc63d]/10 relative overflow-hidden transition-colors shadow-inner">
+                              <div className="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-[#fbc63d] to-[#fbc63d]/30" />
+                              <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-[#fbc63d]/[0.03] to-transparent pointer-events-none" />
+                              <p className="text-[#d9d9d9] text-sm md:text-base leading-relaxed relative z-10">
+                                {item.answer}
+                              </p>
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+
+            {/* No results */}
+            {filteredFaqs.length === 0 && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="text-center py-16"
+              >
+                <Search className="w-12 h-12 text-[#7b7979]/30 mx-auto mb-4" />
+                <p className="text-[#7b7979] text-lg mb-2">Aucun résultat trouvé</p>
+                <p className="text-[#7b7979]/60 text-sm">Essayez avec d&apos;autres mots-clés ou consultez toutes les questions.</p>
+                <button
+                  onClick={() => { setSearchQuery(""); setActiveCategory("all"); }}
+                  className="mt-4 text-[#fbc63d] text-sm hover:underline"
+                >
+                  Réinitialiser la recherche
+                </button>
+              </motion.div>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA section */}
+      <section className="py-24 bg-[#0c0c0a]">
+        <div className="max-w-4xl mx-auto px-6">
+          <motion.div
+            className="bg-gradient-to-br from-[#201f1b] to-[#0c0c0a] rounded-3xl p-10 md:p-16 border border-[#fbc63d]/10 text-center relative overflow-hidden"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="absolute -top-12 -right-12 w-48 h-48 bg-[#fbc63d]/5 rounded-full blur-3xl" />
+            <div className="absolute -bottom-12 -left-12 w-48 h-48 bg-[#fbc63d]/5 rounded-full blur-3xl" />
+
+            <div className="relative z-10">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Vous ne trouvez pas votre réponse ?
+              </h2>
+              <p className="text-[#d9d9d9] text-lg mb-8 max-w-xl mx-auto">
+                Notre équipe est disponible pour répondre à toutes vos questions et discuter de votre projet.
+              </p>
+              <div className="flex flex-wrap justify-center gap-4">
+                <Link href="/contact">
+                  <Button className="bg-[#fbc63d] text-[#070602] hover:bg-[#ffbb00] hover:scale-105 px-8 py-3 rounded-full text-sm font-medium transition-all duration-300">
+                    Nous contacter
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </Link>
+                <Link href="/devis">
+                  <Button className="bg-transparent border border-[#fbc63d] text-white hover:bg-[#fbc63d]/10 hover:scale-105 px-8 py-3 rounded-full text-sm font-medium transition-all duration-300">
+                    Demander un devis
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+    </main>
+  );
 }

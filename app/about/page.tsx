@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Check, Users, Target, BarChart3, Lightbulb, Heart } from "lucide-react";
+import { Users, Target, BarChart3, Lightbulb, Heart } from "lucide-react";
 
 export default function AboutPage() {
   // Données pour les valeurs
@@ -12,7 +12,7 @@ export default function AboutPage() {
     {
       icon: <Lightbulb className="w-6 h-6 text-[#fbc63d]" />,
       title: "Innovation",
-      description: "Nous restons à la pointe des technologies pour créer des solutions modernes et innovantes."
+      description: "Nous restons à la pointe des technologies pour créer des solutions numériques modernes et innovantes."
     },
     {
       icon: <Users className="w-6 h-6 text-[#fbc63d]" />,
@@ -32,7 +32,7 @@ export default function AboutPage() {
     {
       icon: <Heart className="w-6 h-6 text-[#fbc63d]" />,
       title: "Passion",
-      description: "Nous sommes animés par une passion pour le développement web et le design qui se reflète dans chaque projet."
+      description: "Nous sommes animés par une passion pour le développement d'applications et le design qui se reflète dans chaque projet."
     }
   ];
 
@@ -52,9 +52,15 @@ export default function AboutPage() {
     },
     {
       name: "ANDRIAMITENOVOLA Miaritsoa",
-      role: "Lead developper",
+      role: "Lead Developer",
       image: "/miaritsoa.webp",
-      bio: "Lead developper passionné par l’innovation, j’œuvre à concrétiser les ambitions et à propulser les projets vers de nouveaux horizons. Véritable pont entre la vision des clients et des solutions tangibles et durables, je repense les approches existantes et guide les équipes vers l’excellence. Mon objectif : accompagner chaque projet sur le chemin de l’impact et du succès"
+      bio: "Lead Developer passionné par l'innovation, j'œuvre à concrétiser les ambitions et à propulser les projets vers de nouveaux horizons. Véritable pont entre la vision des clients et des solutions tangibles et durables, je repense les approches existantes et guide les équipes vers l'excellence. Mon objectif : accompagner chaque projet sur le chemin de l'impact et du succès."
+    },
+    {
+      name: "RANAIVOSON Faniry",
+      role: "Developer",
+      image: "",
+      bio: "J'aime comprendre comment les systèmes fonctionnent, que ce soit au niveau de l'architecture ou de l'implémentation. Cependant, je crois qu'une application performante doit aussi être visuellement attrayante ; j'associe performance technique et design épuré et séduisant pour créer des logiciels aussi captivants que fiables."
     }
   ];
 
@@ -86,14 +92,14 @@ export default function AboutPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              Découvrez qui nous sommes, notre histoire et notre vision pour l'avenir.
+              Découvrez qui nous sommes, notre histoire et notre vision pour l&apos;avenir.
             </motion.p>
           </div>
         </div>
       </section>
 
       {/* About section */}
-      <section className="py-24">
+      <section className="py-28">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -126,20 +132,20 @@ export default function AboutPage() {
             >
               <h2 className="text-3xl font-bold mb-6">Notre histoire</h2>
               <p className="text-[#d9d9d9] mb-6 leading-relaxed">
-                I-Tsika est une agence web créative fondée par des passionnés du numérique en 2025. Notre mission est d'aider les entreprises à se démarquer sur internet grâce à des solutions web innovantes, accessibles et performantes.
+                I-Tsika est une agence de développement numérique fondée par des passionnés de l&apos;informatique en 2025. Notre mission est d&apos;aider les entreprises à se démarquer grâce à des applications sur mesure — web, desktop et mobiles — innovantes, accessibles et performantes.
               </p>
               <p className="text-[#d9d9d9] mb-8 leading-relaxed">
-                Nous sommes une équipe d'étudiants en informatique réunis par la passion du développement web et du design. Notre objectif est de fournir des solutions de qualité professionnelle tout en continuant à nous former et à développer nos compétences.
+                Nous sommes une équipe d&apos;étudiants en informatique réunis par la passion du développement d&apos;applications et du design. Notre objectif est de fournir des solutions de qualité professionnelle tout en continuant à nous former et à développer nos compétences.
               </p>
               
               <h3 className="text-xl font-semibold mb-4">Notre mission</h3>
               <p className="text-[#d9d9d9] mb-8 leading-relaxed">
-                Aider les entreprises et entrepreneurs à développer leur présence en ligne grâce à des solutions web modernes et efficaces, tout en offrant un service personnalisé et à l'écoute des besoins de chacun.
+                Aider les entreprises et entrepreneurs à développer leur activité grâce à des applications numériques modernes et efficaces — web, desktop et mobiles — tout en offrant un service personnalisé et à l&apos;écoute des besoins de chacun.
               </p>
 
               <h3 className="text-xl font-semibold mb-4">Notre vision</h3>
               <p className="text-[#d9d9d9] leading-relaxed">
-                Devenir une référence dans le domaine du développement web à Madagascar en alliant expertise technique, créativité et service client de qualité.
+                Devenir une référence dans le domaine du développement d&apos;applications à Madagascar en alliant expertise technique, créativité et service client de qualité.
               </p>
             </motion.div>
           </div>
@@ -147,7 +153,7 @@ export default function AboutPage() {
       </section>
 
       {/* Values section */}
-      <section className="py-24">
+      <section className="py-28">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <motion.span
@@ -205,7 +211,7 @@ export default function AboutPage() {
       </section>
 
       {/* Team section */}
-      <section className="py-24 bg-[#0c0c0a]">
+      <section className="py-28 bg-[#0c0c0a]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <motion.span
@@ -233,11 +239,11 @@ export default function AboutPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              Une équipe jeune et dynamique, passionnée par le web et le design.
+              Une équipe jeune et dynamique, passionnée par le développement d&apos;applications et le design.
             </motion.p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {team.map((member, index) => (
               <motion.div
                 key={index}
@@ -248,23 +254,31 @@ export default function AboutPage() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 <div className="mb-6 relative">
-                  <div className="aspect-w-1 aspect-h-1 overflow-hidden rounded-2xl">
-                    <Image
-                      src={member.image}
-                      alt={member.name}
-                      width={300}
-                      height={300}
-                      className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
-                    />
+                  <div className="aspect-square overflow-hidden rounded-2xl bg-[#0c0c0a]">
+                    {member.image ? (
+                      <Image
+                        src={member.image}
+                        alt={member.name}
+                        width={300}
+                        height={300}
+                        className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#fbc63d]/10 to-[#201f1b]">
+                        <span className="text-4xl font-bold text-[#fbc63d]/40">
+                          {member.name.split(' ').pop()?.charAt(0)}
+                        </span>
+                      </div>
+                    )}
                   </div>
                   {/* Decorative elements */}
                   <div className="absolute -bottom-3 -right-3 w-24 h-24 bg-[#fbc63d]/10 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
-                <h3 className="text-xl font-semibold mb-1 group-hover:text-[#fbc63d] transition-colors">
+                <h3 className="text-lg font-semibold mb-1 group-hover:text-[#fbc63d] transition-colors">
                   {member.name}
                 </h3>
                 <p className="text-[#fbc63d] text-sm mb-4">{member.role}</p>
-                <p className="text-[#d9d9d9] text-sm leading-relaxed">
+                <p className="text-[#d9d9d9] text-sm leading-relaxed line-clamp-4">
                   {member.bio}
                 </p>
               </motion.div>
@@ -292,7 +306,7 @@ export default function AboutPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            Contactez-nous dès aujourd'hui pour discuter de votre projet et découvrir comment nous pouvons vous aider à atteindre vos objectifs.
+            Contactez-nous dès aujourd&apos;hui pour discuter de votre projet et découvrir comment nous pouvons vous aider à atteindre vos objectifs.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
