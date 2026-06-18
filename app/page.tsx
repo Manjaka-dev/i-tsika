@@ -141,11 +141,11 @@ export default function HomePage() {
       {/* Section Hero / Accueil */}
       <HeroSection
         title="Des applications sur mesure pour transformer votre activité"
-        subtitle="Agence de développement d'applications"
+        subtitle="Startup de développement d'applications"
         description="Web, desktop, mobile — nous concevons des solutions numériques innovantes qui s'adaptent parfaitement à vos besoins métier et maximisent votre impact."
         ctaText="Demander un devis gratuit"
         ctaLink="/devis"
-        backgroundImage="/hero.png"
+        backgroundImage="/hero.webp"
       />
 
       {/* Section Services */}
@@ -186,7 +186,7 @@ export default function HomePage() {
         <AboutSection 
           values={values}
           imageSrc="/nous.webp"
-          description="I-Tsika est une agence de développement numérique fondée en 2025 par des étudiants en informatique passionnés. Notre mission est d'aider les entreprises à se démarquer grâce à des applications sur mesure — web, desktop et mobiles — innovantes, accessibles et performantes."
+          description="I-Tsika est une startup de développement numérique fondée en 2025 par des étudiants en informatique passionnés. Notre mission est d'aider les entreprises à se démarquer grâce à des applications sur mesure — web, desktop et mobiles — innovantes, accessibles et performantes."
         />
       </section>
 
@@ -235,7 +235,7 @@ export default function HomePage() {
               >
                 {/* Mockup placeholder */}
                 <div className="h-48 bg-gradient-to-br from-[#fbc63d]/10 via-[#201f1b] to-[#070602] flex items-center justify-center relative overflow-hidden">
-                  <div className="absolute inset-0 bg-[url('/hero.png')] bg-cover bg-center opacity-10 group-hover:opacity-20 transition-opacity duration-500" />
+                  <div className="absolute inset-0 bg-[url('/hero.webp')] bg-cover bg-center opacity-10 group-hover:opacity-20 transition-opacity duration-500" />
                   <div className="relative z-10 text-center">
                     <div className="w-16 h-16 bg-[#fbc63d]/20 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300">
                       <span className="text-[#fbc63d] text-2xl font-bold">{project.title.charAt(0)}</span>
@@ -289,57 +289,57 @@ export default function HomePage() {
       </section>
 
       {/* Section Témoignages — structure prête */}
-      <section id="testimonials" className="py-28">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12 md:mb-16">
-            <motion.span
-              className="text-[#fbc63d] uppercase tracking-wider text-sm font-medium mb-3 block"
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              Ce qu&apos;ils disent de nous
-            </motion.span>
-            <motion.h2
-              className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6"
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            >
-              Témoignages
-            </motion.h2>
-          </div>
+      {/*<section id="testimonials" className="py-28">*/}
+      {/*  <div className="max-w-7xl mx-auto px-6">*/}
+      {/*    <div className="text-center mb-12 md:mb-16">*/}
+      {/*      <motion.span*/}
+      {/*        className="text-[#fbc63d] uppercase tracking-wider text-sm font-medium mb-3 block"*/}
+      {/*        initial={{ opacity: 0, y: 10 }}*/}
+      {/*        whileInView={{ opacity: 1, y: 0 }}*/}
+      {/*        viewport={{ once: true }}*/}
+      {/*        transition={{ duration: 0.5 }}*/}
+      {/*      >*/}
+      {/*        Ce qu&apos;ils disent de nous*/}
+      {/*      </motion.span>*/}
+      {/*      <motion.h2*/}
+      {/*        className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6"*/}
+      {/*        initial={{ opacity: 0, y: 10 }}*/}
+      {/*        whileInView={{ opacity: 1, y: 0 }}*/}
+      {/*        viewport={{ once: true }}*/}
+      {/*        transition={{ duration: 0.5, delay: 0.1 }}*/}
+      {/*      >*/}
+      {/*        Témoignages*/}
+      {/*      </motion.h2>*/}
+      {/*    </div>*/}
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            {[1, 2, 3].map((_, index) => (
-              <motion.div
-                key={index}
-                className="bg-[#201f1b]/40 rounded-2xl p-8 border border-[#fbc63d]/5 relative"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <Quote className="w-8 h-8 text-[#fbc63d]/20 mb-4" />
-                <p className="text-[#7b7979] text-sm italic mb-6 leading-relaxed">
-                  Témoignage à venir — cet espace est réservé pour un futur avis client.
-                </p>
-                <div className="flex items-center">
-                  <div className="w-10 h-10 bg-[#fbc63d]/10 rounded-full flex items-center justify-center mr-3">
-                    <span className="text-[#fbc63d] text-sm font-bold">?</span>
-                  </div>
-                  <div>
-                    <p className="text-[#7b7979] text-sm font-medium">Nom du client</p>
-                    <p className="text-[#7b7979]/60 text-xs">Entreprise</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/*    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">*/}
+      {/*      {[1, 2, 3].map((_, index) => (*/}
+      {/*        <motion.div*/}
+      {/*          key={index}*/}
+      {/*          className="bg-[#201f1b]/40 rounded-2xl p-8 border border-[#fbc63d]/5 relative"*/}
+      {/*          initial={{ opacity: 0, y: 30 }}*/}
+      {/*          whileInView={{ opacity: 1, y: 0 }}*/}
+      {/*          viewport={{ once: true }}*/}
+      {/*          transition={{ duration: 0.5, delay: index * 0.1 }}*/}
+      {/*        >*/}
+      {/*          <Quote className="w-8 h-8 text-[#fbc63d]/20 mb-4" />*/}
+      {/*          <p className="text-[#7b7979] text-sm italic mb-6 leading-relaxed">*/}
+      {/*            Témoignage à venir — cet espace est réservé pour un futur avis client.*/}
+      {/*          </p>*/}
+      {/*          <div className="flex items-center">*/}
+      {/*            <div className="w-10 h-10 bg-[#fbc63d]/10 rounded-full flex items-center justify-center mr-3">*/}
+      {/*              <span className="text-[#fbc63d] text-sm font-bold">?</span>*/}
+      {/*            </div>*/}
+      {/*            <div>*/}
+      {/*              <p className="text-[#7b7979] text-sm font-medium">Nom du client</p>*/}
+      {/*              <p className="text-[#7b7979]/60 text-xs">Entreprise</p>*/}
+      {/*            </div>*/}
+      {/*          </div>*/}
+      {/*        </motion.div>*/}
+      {/*      ))}*/}
+      {/*    </div>*/}
+      {/*  </div>*/}
+      {/*</section>*/}
 
       {/* Section FAQ */}
       <section id="faq" className="py-20 md:py-28 bg-[#0c0c0a]">

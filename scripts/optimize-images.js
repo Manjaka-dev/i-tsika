@@ -15,7 +15,7 @@ const settings = {
   // Tailles responsives pour les images importantes
   responsive: {
     // Clés = nom du fichier source, valeurs = array des largeurs
-    'hero.png': [640, 1024, 1920],
+    'hero.webp': [640, 1024, 1920],
     'portfolio-hero.png': [640, 1024, 1920],
     // Ajoutez d'autres images selon vos besoins
   }

@@ -17,7 +17,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'I-Tsika — Agence de développement d\'applications sur mesure',
+  title: 'I-Tsika — startup de développement d\'applications sur mesure',
   description: 'I-Tsika développe des applications web, desktop et mobiles sur mesure à Antananarivo, Madagascar. Solutions numériques performantes pour entreprises : SaaS, logiciels métier, sites vitrines, e-commerce.',
   keywords: 'développement application, application web, application desktop, application mobile, logiciel métier, SaaS, site vitrine, e-commerce, Madagascar, Antananarivo, I-Tsika',
   authors: [{ name: 'I-Tsika Team' }],

@@ -89,7 +89,7 @@ export default function PortfolioPage() {
               >
                 {/* Project mockup */}
                 <div className="h-56 bg-gradient-to-br from-[#fbc63d]/10 via-[#201f1b] to-[#070602] flex items-center justify-center relative overflow-hidden">
-                  <div className="absolute inset-0 bg-[url('/hero.png')] bg-cover bg-center opacity-5 group-hover:opacity-15 transition-opacity duration-700" />
+                  <div className="absolute inset-0 bg-[url('/hero.webp')] bg-cover bg-center opacity-5 group-hover:opacity-15 transition-opacity duration-700" />
                   
                   {/* Decorative code lines */}
                   <div className="absolute top-4 left-4 right-4 space-y-2 opacity-20 group-hover:opacity-30 transition-opacity">

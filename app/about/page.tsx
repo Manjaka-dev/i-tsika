@@ -41,7 +41,7 @@ export default function AboutPage() {
     {
       name: "ANDRIANTSOA A. Manjaka",
       role: "Growth Marketer",
-      image: "/manjaka.webp",
+      image: "/manjaka.tiff",
       bio: "Étudiant passionné en informatique, animé par la curiosité et déterminé à concevoir des solutions intelligentes et fiables grâce au travail d'équipe et à l'apprentissage continu."
     },
     {
@@ -59,7 +59,7 @@ export default function AboutPage() {
     {
       name: "RANAIVOSON Faniry",
       role: "Developer",
-      image: "",
+      image: "/faniry.webp",
       bio: "J'aime comprendre comment les systèmes fonctionnent, que ce soit au niveau de l'architecture ou de l'implémentation. Cependant, je crois qu'une application performante doit aussi être visuellement attrayante ; j'associe performance technique et design épuré et séduisant pour créer des logiciels aussi captivants que fiables."
     }
   ];
@@ -132,7 +132,7 @@ export default function AboutPage() {
             >
               <h2 className="text-3xl font-bold mb-6">Notre histoire</h2>
               <p className="text-[#d9d9d9] mb-6 leading-relaxed">
-                I-Tsika est une agence de développement numérique fondée par des passionnés de l&apos;informatique en 2025. Notre mission est d&apos;aider les entreprises à se démarquer grâce à des applications sur mesure — web, desktop et mobiles — innovantes, accessibles et performantes.
+                I-Tsika est une startup de développement numérique fondée par des passionnés de l&apos;informatique en 2025. Notre mission est d&apos;aider les entreprises à se démarquer grâce à des applications sur mesure — web, desktop et mobiles — innovantes, accessibles et performantes.
               </p>
               <p className="text-[#d9d9d9] mb-8 leading-relaxed">
                 Nous sommes une équipe d&apos;étudiants en informatique réunis par la passion du développement d&apos;applications et du design. Notre objectif est de fournir des solutions de qualité professionnelle tout en continuant à nous former et à développer nos compétences.
