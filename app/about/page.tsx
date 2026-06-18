@@ -41,7 +41,7 @@ export default function AboutPage() {
     {
       name: "ANDRIANTSOA A. Manjaka",
       role: "Growth Marketer",
-      image: "/manjaka.tiff",
+      image: "/manjaka_and.webp",
       bio: "Étudiant passionné en informatique, animé par la curiosité et déterminé à concevoir des solutions intelligentes et fiables grâce au travail d'équipe et à l'apprentissage continu."
     },
     {
