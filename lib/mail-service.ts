@@ -3,12 +3,12 @@ import { mailConfig, RECIPIENT_EMAIL, SENDER_EMAIL } from './mail-config';
 
 // Création du transporteur d'email avec les paramètres Zoho Mail
 const transporter = nodemailer.createTransport({
-  host: 'smtppro.zoho.com',
-  port: 465,
+  host: process.env.EMAIL_HOST || 'smtp.zoho.com',
+  port: Number(process.env.EMAIL_PORT) || 465,
   secure: true,
   auth: {
-    user: 'noreply@i-tsika.site',
-    pass: process.env.EMAIL_PASS
+    user: process.env.EMAIL_USER || 'noreply@i-tsika.site',
+    pass: process.env.EMAIL_PASS?.replace(/\s+/g, '') // Retire les espaces si Zoho les a rajoutés
   }
 });
 

@@ -116,7 +116,7 @@ export default function DevisPage() {
       if (!formData.description.trim()) {
         newErrors.description = "La description est requise";
       } else if (formData.description.trim().length < 10) {
-        newErrors.description = `Minimum 10 caractères (${formData.description.trim().length}/10)`;
+        newErrors.description = `Minimum 100 caractères (${formData.description.trim().length}/10)`;
       }
     }
 
