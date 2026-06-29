@@ -59,6 +59,28 @@ export const sendContactEmail = async (name: string, email: string, message: str
     };
 
     const info = await transporter.sendMail(mailOptions);
+    
+    // Envoi de l'email de confirmation au client
+    const autoReplyOptions = {
+      from: `"I-Tsika" <${SENDER_EMAIL}>`,
+      to: email,
+      subject: `Confirmation de la réception de votre message`,
+      html: `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
+          <h2 style="color: #fbc63d;">Bonjour ${name},</h2>
+          <p>Nous avons bien reçu votre message et nous vous en remercions.</p>
+          <p>Notre équipe va l'étudier avec attention et reviendra vers vous très prochainement.</p>
+          <br>
+          <p>Cordialement,</p>
+          <p><strong>L'équipe I-Tsika</strong></p>
+          <p><a href="https://www.i-tsika.site" style="color: #fbc63d; text-decoration: none;">www.i-tsika.site</a></p>
+        </div>
+      `
+    };
+    
+    // On n'attend pas la réponse de ce deuxième envoi pour ne pas bloquer l'UI
+    transporter.sendMail(autoReplyOptions).catch(err => console.error("Erreur auto-réponse contact:", err));
+
     return { success: true, messageId: info.messageId };
   } catch (error) {
     return { 
@@ -206,6 +228,34 @@ Cahier des charges: ${data.hasSpecification}
     };
 
     const info = await transporter.sendMail(mailOptions);
+    
+    // Envoi de l'email de confirmation au client
+    const autoReplyOptions = {
+      from: `"I-Tsika" <${SENDER_EMAIL}>`,
+      to: data.email,
+      subject: `Confirmation de votre demande de devis`,
+      html: `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
+          <div style="background-color: #070602; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;">
+            <h1 style="color: #fbc63d; margin: 0; font-size: 22px;">Demande bien reçue !</h1>
+          </div>
+          <div style="padding: 20px; border: 1px solid #eee; border-top: none; border-radius: 0 0 8px 8px;">
+            <p>Bonjour <strong>${data.firstName}</strong>,</p>
+            <p>Nous avons bien reçu votre demande de devis pour votre projet : <strong>${data.projectType}</strong>.</p>
+            <p>Un expert de notre équipe va analyser vos besoins en détail. Nous reviendrons vers vous sous 48h pour discuter des prochaines étapes ou vous proposer une première estimation.</p>
+            <p>Merci pour votre confiance !</p>
+            <br>
+            <p>Cordialement,</p>
+            <p><strong>L'équipe I-Tsika</strong></p>
+            <p><a href="https://www.i-tsika.site" style="color: #fbc63d; text-decoration: none;">www.i-tsika.site</a></p>
+          </div>
+        </div>
+      `
+    };
+    
+    // On n'attend pas la réponse de ce deuxième envoi pour ne pas ralentir l'utilisateur
+    transporter.sendMail(autoReplyOptions).catch(err => console.error("Erreur auto-réponse devis:", err));
+
     return { success: true, messageId: info.messageId };
   } catch (error) {
     return { 
